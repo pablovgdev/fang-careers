@@ -1,0 +1,25 @@
+.card {
+	display: flex;
+	border-bottom: 0.3px solid rgba(0, 0, 0, 0.3);
+}
+
+.logo {
+	display: flex;
+	align-items: center;
+	background-color: #262F3D;
+}
+
+.logo img {
+	width: 80px;
+	height: 80px;
+}
+
+.section {
+	display: flex;
+	flex-direction: column;
+	padding: 20px;
+}
+
+.section p {
+	margin-top: 10px;
+}
