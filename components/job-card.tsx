@@ -2,6 +2,7 @@ import Link from "next/link";
 import React from "react";
 import { Job } from "../models/job";
 import styles from "../styles/job-card.module.css";
+import { dateFormat } from "../util/util";
 
 interface JobProps {
 	job: Job;
@@ -49,7 +50,10 @@ export default function JobCard({ job }: JobProps) {
 							color: companyStyle.primary
 						}}
 					>{job.category.toUpperCase()}</div>
-					<div className={styles.location}>{job.location + " | " + job.date}</div>
+					<div className={styles.details}>
+						<p className={styles.location}>{job.location}</p>
+						<p className={styles.date}>{dateFormat(job.date)}</p>
+					</div>
 				</section>
 			</div>
 		</Link >

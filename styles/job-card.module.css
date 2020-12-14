@@ -16,19 +16,17 @@
 }
 
 .section {
-	display: flex;
-	flex-direction: column;
 	padding: 20px;
 	width: 100%;
 	background-color: white;
 }
 
 .section div {
-	width: fit-content;
 	margin-top: 10px;
 }
 
 .category {
+	width: fit-content;
 	border-radius: 5px;
 	padding: 4px 8px;
 	font-weight: 900;
@@ -37,8 +35,18 @@
 	color: white;
 }
 
-.location {
+.details {
+	display: flex;
+	justify-content: space-between;
 	color: rgba(0, 0, 0, 0.6);
+}
+
+.location {
+	text-align: left;
+}
+
+.date {
+	text-align: right;
 }
 
 @media (min-width: 576px) {
