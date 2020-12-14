@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "../styles/job-grid.module.css";
-import { loadJobs } from "../util/functions";
+import { loadJobs } from "../util/util";
 import JobCard from "./job-card";
 
 export default function JobGrid() {

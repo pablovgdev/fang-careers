@@ -3,7 +3,7 @@ import React from "react";
 import Container from "../components/container";
 import JobDetail from "../components/job-detail";
 import { Job } from "../models/job";
-import { loadJobs } from "../util/functions";
+import { loadJobs } from "../util/util";
 
 export default function JobPage() {
 	const { query } = useRouter();

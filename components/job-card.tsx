@@ -49,7 +49,7 @@ export default function JobCard({ job }: JobProps) {
 							color: companyStyle.primary
 						}}
 					>{job.category.toUpperCase()}</div>
-					<div className={styles.location}>{job.location}</div>
+					<div className={styles.location}>{job.location + " | " + job.date}</div>
 				</section>
 			</div>
 		</Link >
