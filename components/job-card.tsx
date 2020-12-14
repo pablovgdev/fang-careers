@@ -25,7 +25,7 @@ function getCompanyStyle(company: string): CompanyStyle {
 			companyStyle = { logo: "netflix.webp", primary: "#E50A13", secondary: "#000000" };
 			break;
 		default:
-			companyStyle = { logo: "amazon.webp", primary: "#F79C34", secondary: "#262F3D" };
+			companyStyle = { logo: "fang.webp", primary: "#F2F2F2", secondary: "#C20A3E" };
 			break;
 	}
 
