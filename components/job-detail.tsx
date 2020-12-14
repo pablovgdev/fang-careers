@@ -13,15 +13,7 @@ export default function JobDetail({ job }: JobViewProps) {
 			<p><b>Location: </b>{job.location}</p>
 			<p><b>Posted: </b>{job.date}</p>
 			<p><b>Description:</b></p>
-			<p>{job.description}</p>
-			<p><b>Basic qualifications:</b></p>
-			<ul>
-				{job.basicQualifications.map(qualification => <li>{qualification}</li>)}
-			</ul>
-			<p><b>Preferred qualifications:</b></p>
-			<ul>
-				{job.preferredQualifications.map(qualification => <li>{qualification}</li>)}
-			</ul>
+			<p dangerouslySetInnerHTML={{ __html: job.description }}></p>
 		</div>
 	);
 }

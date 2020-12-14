@@ -7,7 +7,6 @@
 .logo {
 	display: flex;
 	align-items: center;
-	background-color: #262F3D;
 }
 
 .logo img {
@@ -32,8 +31,9 @@
 .category {
 	border-radius: 5px;
 	padding: 4px 8px;
-	font-weight: 700;
-	background-color: #262F3D;
+	font-weight: 900;
+	background-color: #5A2FB1;
+	letter-spacing: 0.3px;
 	color: white;
 }
 
@@ -46,17 +46,14 @@
 		border-radius: 5px;
 		border: none;
 	}
-
 	.logo {
 		border-top-left-radius: 5px;
 		border-bottom-left-radius: 5px;
 	}
-
 	.section {
 		border-top-right-radius: 5px;
 		border-bottom-right-radius: 5px;
 	}
-
 	.logo img {
 		width: 120px;
 		height: 120px;

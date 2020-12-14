@@ -4,8 +4,6 @@ export interface Job {
 	title: string;
 	category: string;
 	description: string;
-	basicQualifications: string[];
-	preferredQualifications: string[];
 	location: string;
 	date: string;
 	url: string;
