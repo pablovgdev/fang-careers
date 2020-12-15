@@ -16,14 +16,7 @@ export function loadJobs(): Job[] {
 		} else if (date1 < date2) {
 			return 1;
 		} else {
-			// Randomize order between jobs with the same date
-			const random = Math.floor((Math.random() * 2) + 1);
-
-			if (random % 2) {
-				return 1;
-			} else {
-				return -1;
-			}
+			return 0;
 		}
 	});
 
