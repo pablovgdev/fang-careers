@@ -1,14 +1,16 @@
 import React from "react";
+import { Job } from "../models/job";
 import styles from "../styles/job-grid.module.css";
-import { loadJobs } from "../util/util";
 import JobCard from "./job-card";
 
-export default function JobGrid() {
-	const jobsData = loadJobs();
+interface JobGridProps {
+	jobs: Job[];
+}
 
+export default function JobGrid({ jobs }: JobGridProps) {
 	return (
 		<div className={styles.grid}>
-			{jobsData.map(job => <JobCard key={job.id} job={job} />)}
+			{jobs.map(job => <JobCard key={job.id} job={job} />)}
 		</div>
 	);
 }
