@@ -1,11 +1,12 @@
 import { Job } from "../models/job";
 import styles from "../styles/job-detail.module.css";
 
-interface JobViewProps {
+interface JobDetailProps {
 	job: Job;
 }
 
-export default function JobDetail({ job }: JobViewProps) {
+export default function JobDetail({ job }: JobDetailProps) {
+	console.log(job.title);
 	return (
 		<div className={styles.jobDetail}>
 			<h1>{job.title}</h1>

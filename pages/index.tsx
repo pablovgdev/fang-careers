@@ -2,6 +2,7 @@ import axios from "axios";
 import React from "react";
 import Container from "../components/container";
 import JobGrid from "../components/job-grid";
+import Landing from "../components/landing";
 import { Job } from "../models/job";
 
 interface JobsPageProps {
@@ -9,7 +10,14 @@ interface JobsPageProps {
 }
 
 export default function JobsPage({ jobs }: JobsPageProps) {
-	return <Container><JobGrid jobs={jobs} /></Container>;
+	return (
+		<>
+			<Landing />
+			<Container>
+				<JobGrid jobs={jobs} />
+			</Container>
+		</>
+	);
 }
 
 export async function getServerSideProps() {

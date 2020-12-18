@@ -1,8 +1,7 @@
 import React from "react";
 import styles from "../styles/container.module.css";
-
 interface ContainerProps {
-	children: JSX.Element;
+	children: JSX.Element[] | JSX.Element;
 }
 
 export default function Container({ children }: ContainerProps) {
