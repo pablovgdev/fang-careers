@@ -13,7 +13,8 @@ export default function JobsPage({ jobs }: JobsPageProps) {
 }
 
 export async function getServerSideProps() {
-	const response = await axios.get<Job[]>("http://localhost:3001/jobs/software");
+	const url = "https://fang-jobs-scraper.ew.r.appspot.com/jobs/software";
+	const response = await axios.get<Job[]>(url);
 	const jobs = response.data;
 	return { props: { jobs } };
 }
