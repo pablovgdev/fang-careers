@@ -1,20 +1,21 @@
+import ReactHtmlParser from "react-html-parser";
 import { Job } from "../models/job";
 import styles from "../styles/job-detail.module.css";
+import { dateFormat } from "../util/util";
 
 interface JobDetailProps {
 	job: Job;
 }
 
 export default function JobDetail({ job }: JobDetailProps) {
-	console.log(job.title);
 	return (
 		<div className={styles.jobDetail}>
-			<h1>{job.title}</h1>
-			<p><b>Category: </b>{job.category}</p>
-			<p><b>Location: </b>{job.location}</p>
-			<p><b>Posted: </b>{job.date}</p>
-			<p><b>Description:</b></p>
-			<p dangerouslySetInnerHTML={{ __html: job.description }}></p>
+			<h1 className={styles.title}>{job.title}</h1>
+			<div className={styles.details}>
+				<div>{job.location}</div>
+				<div>{dateFormat(job.date)}</div>
+			</div>
+			<p>{ReactHtmlParser(job.description)}</p>
 		</div>
 	);
 }

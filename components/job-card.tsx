@@ -2,34 +2,10 @@ import Link from "next/link";
 import React from "react";
 import { Job } from "../models/job";
 import styles from "../styles/job-card.module.css";
-import { dateFormat } from "../util/util";
+import { dateFormat, getCompanyStyle } from "../util/util";
 
 interface JobProps {
 	job: Job;
-}
-
-interface CompanyStyle {
-	logo: string;
-	primary: string;
-	secondary: string;
-}
-
-function getCompanyStyle(company: string): CompanyStyle {
-	let companyStyle: CompanyStyle;
-
-	switch (company) {
-		case "AMAZON":
-			companyStyle = { logo: "amazon.webp", primary: "#F79C34", secondary: "#262F3D" };
-			break;
-		case "NETFLIX":
-			companyStyle = { logo: "netflix.webp", primary: "#E50A13", secondary: "#000000" };
-			break;
-		default:
-			companyStyle = { logo: "fang.webp", primary: "#F2F2F2", secondary: "#C20A3E" };
-			break;
-	}
-
-	return companyStyle;
 }
 
 export default function JobCard({ job }: JobProps) {
