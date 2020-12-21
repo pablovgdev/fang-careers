@@ -35,7 +35,7 @@ export function getCompanyStyle(company: string): CompanyStyle {
 			companyStyle = { logo: "netflix.webp", primary: "#E50A13", secondary: "#000000" };
 			break;
 		case "GOOGLE":
-			companyStyle = { logo: "google.webp", primary: "#68A851", secondary: "#FFFFFF" };
+			companyStyle = { logo: "google.webp", primary: "#68A851", secondary: "#E0E0E0" };
 			break;
 		default:
 			companyStyle = { logo: "fang.webp", primary: "#F2F2F2", secondary: "#C20A3E" };

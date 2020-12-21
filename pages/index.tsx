@@ -1,7 +1,7 @@
 import axios from "axios";
 import React from "react";
 import Container from "../components/container";
-import JobGrid from "../components/job-grid";
+import JobList from "../components/job-list";
 import Landing from "../components/landing";
 import { Job } from "../models/job";
 
@@ -14,7 +14,7 @@ export default function JobsPage({ jobs }: JobsPageProps) {
 		<>
 			<Landing />
 			<Container>
-				<JobGrid jobs={jobs} />
+				<JobList jobs={jobs} />
 			</Container>
 		</>
 	);
