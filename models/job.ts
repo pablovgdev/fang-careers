@@ -4,7 +4,7 @@ export interface Job {
 	title: string;
 	category: string;
 	description: string;
-	location: string;
+	locations: string[];
 	date: string;
 	url: string;
 }

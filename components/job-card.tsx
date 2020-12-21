@@ -27,7 +27,7 @@ export default function JobCard({ job }: JobProps) {
 						}}
 					>{job.category.toUpperCase()}</div>
 					<div className={styles.details}>
-						<p className={styles.location}>{job.location}</p>
+						<p className={styles.location}>{job.locations.join(" / ")}</p>
 						<p className={styles.date}>{dateFormat(job.date)}</p>
 					</div>
 				</section>
