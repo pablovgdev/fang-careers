@@ -1,6 +1,6 @@
 .card {
 	display: flex;
-	border-bottom: 1px solid rgba(0, 0, 0, 0.66);
+	border-bottom: 1px solid rgba(0, 0, 0, 0.3);
 	cursor: pointer;
 }
 
@@ -38,13 +38,20 @@
 	color: rgba(0, 0, 0, 0.6);
 }
 
-.details p:last-child {
+.details .date {
 	margin-top: 10px; 
 }
 
 .description {
-	padding: 30px;
+	padding: 20px;
 	background-color: white;
+}
+
+.description p {
+	max-width: calc(100vw - 40px);
+	overflow-wrap: break-word;
+	word-wrap: break-word;
+	hyphens: auto;
 }
 
 .description li {
