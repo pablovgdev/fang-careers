@@ -1,6 +1,6 @@
 .card {
 	display: flex;
-	border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+	border-bottom: 1px solid rgba(0, 0, 0, 0.3);
 	cursor: pointer;
 	border-radius: 0px;
 }
@@ -11,19 +11,34 @@
 }
 
 .logo img {
-	display: none;
+	width: 80px;
+	height: 80px;
 }
 
+
 .section {
-	padding: 20px;
 	width: 100%;
+	padding: 20px;
+	background-color: white;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 }
 
 .section div {
 	margin-top: 10px;
 }
 
-.details .date {
+.title {
+	font-size: 16px;
+}
+
+.details {
+	color:rgba(0, 0, 0, 0.666);
+	font-size: 14px;
+}
+
+.date {
 	margin-top: 10px; 
 }
 
@@ -47,9 +62,8 @@
 
 @media (min-width: 576px) {
 	.logo img {
-		display: block;
-		width: 120px;
-		height: 120px;
+		width: 100px;
+		height: 100px;
 	}
 
 	.details {
@@ -57,26 +71,36 @@
 		justify-content: space-between;
 	}
 	
-	.details .date {
-		margin-top: 0; 
-	}
-
 	.location {
 		text-align: left;
 	}
 
 	.date {
+		min-width: 120px;
+		margin-top: 0; 
 		text-align: right;
 	}
 }
 
 @media (min-width: 769px) {
+	.logo {
+		border-top-left-radius: 5px;
+		border-bottom-left-radius: 5px;
+	}
+
+	.logo img {
+		width: 120px;
+		height: 120px;
+		border-top-left-radius: 5px;
+		border-bottom-left-radius: 5px;
+	}
+
 	.card {
 		margin-top: 10px;
 		border-radius: 5px;
 		border: none;
 	}
-	
+
 	.description {
 		border: none;
 	}
@@ -84,5 +108,9 @@
 	.logo img {
 		border-top-left-radius: 5px;
 		border-bottom-left-radius: 5px;
+	}
+
+	.date {
+		width: auto;
 	}
 }
