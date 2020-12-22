@@ -18,13 +18,13 @@ export default function JobCard({ job }: JobProps) {
 
 	return (
 		<>
-			<div className={styles.card} onClick={toggleDescription}>
-				<div className={styles.logo} style={{ backgroundColor: companyStyle.secondary }}>
+			<div className={styles.card} onClick={toggleDescription} style={{ backgroundColor: companyStyle.background }}>
+				<div className={styles.logo}>
 					<img src={companyStyle.logo} alt="logo" />
 				</div>
 				<section className={styles.section}>
-					<h3>{job.title}</h3>
-					<div className={styles.details}>
+					<h3 style={{ color: companyStyle.primary }}>{job.title}</h3>
+					<div className={styles.details} style={{ color: companyStyle.secondary }}>
 						<p className={styles.location}>{job.locations.join(" / ")}</p>
 						<p className={styles.date}>{dateFormat(job.date)}</p>
 					</div>
