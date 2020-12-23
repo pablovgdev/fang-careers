@@ -10,6 +10,7 @@ interface JobProps {
 
 export default function JobCard({ job }: JobProps) {
 	const companyStyle = getCompanyStyle(job.company);
+	const location = job.locations.join(" / ");
 	const [open, setOpen] = useState(false);
 
 	function toggleDescription() {
@@ -23,9 +24,9 @@ export default function JobCard({ job }: JobProps) {
 					<img src={companyStyle.logo} alt="logo" />
 				</div>
 				<section className={styles.section}>
-					<h2 className={styles.title}>{job.title}</h2>
+					<h2 className={styles.title}>{ReactHtmlParser(job.title)}</h2>
 					<div className={styles.details}>
-						<p className={styles.location}>{job.locations.join(" / ")}</p>
+						<p className={styles.location}>{location}</p>
 						<p className={styles.date}>{dateFormat(job.date)}</p>
 					</div>
 				</section>

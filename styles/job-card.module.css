@@ -42,7 +42,6 @@
 }
 
 .description {
-	max-width: 100vw;
 	padding: 20px;
 	background-color: white;
 	border-bottom: 1px solid rgba(0, 0, 0, 0.5);
@@ -52,6 +51,14 @@
 	overflow-wrap: break-word;
 	word-wrap: break-word;
 	hyphens: auto;
+}
+
+.description h2 {
+	margin-top: 20px;
+} 
+
+.description ul {
+	margin-bottom: 20px;
 }
 
 .description li {
