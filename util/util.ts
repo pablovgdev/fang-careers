@@ -28,6 +28,9 @@ export function getCompanyStyle(company: string): CompanyStyle {
 	let companyStyle: CompanyStyle;
 
 	switch (company) {
+		case "FACEBOOK":
+			companyStyle = { logo: "facebook.webp", primary: "#FFFFFF", secondary: "#1877f2", background: "#1877F2" };
+			break;
 		case "AMAZON":
 			companyStyle = { logo: "amazon.webp", primary: "#FFFFFF", secondary: "#F79C34", background: "#262F3D" };
 			break;
