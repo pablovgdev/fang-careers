@@ -10,7 +10,7 @@ interface JobProps {
 
 export default function JobCard({ job }: JobProps) {
 	const companyStyle = getCompanyStyle(job.company);
-	const location = job.locations.join(" / ");
+	const location = job.locations.map(location => location.split(",")[0]).join(", ");
 	const [open, setOpen] = useState(false);
 
 	function toggleDescription() {
