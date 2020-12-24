@@ -32,6 +32,11 @@
 	font-size: 16px;
 }
 
+.tags {
+	display: flex;
+	flex-flow: row wrap;
+}
+
 .details {
 	color:rgba(0, 0, 0, 0.666);
 	font-size: 14px;

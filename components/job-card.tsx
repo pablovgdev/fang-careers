@@ -3,6 +3,7 @@ import ReactHtmlParser from "react-html-parser";
 import { Job } from "../models/job";
 import styles from "../styles/job-card.module.css";
 import { dateFormat, getCompanyStyle } from "../util/util";
+import TagLabel from "./tag-label";
 
 interface JobProps {
 	job: Job;
@@ -17,6 +18,18 @@ export default function JobCard({ job }: JobProps) {
 		setOpen(!open);
 	};
 
+	function renderTags() {
+		if (job.tags.length) {
+			return (
+				<div className={styles.tags}>
+					{job.tags.map(tag => <TagLabel value={tag.value} companyStyle={companyStyle} />)}
+				</div>
+			)
+		} else {
+			return null;
+		}
+	}
+
 	return (
 		<>
 			<div className={styles.card} onClick={toggleDescription}>
@@ -25,6 +38,7 @@ export default function JobCard({ job }: JobProps) {
 				</div>
 				<section className={styles.section}>
 					<h2 className={styles.title}>{ReactHtmlParser(job.title)}</h2>
+					{renderTags()}
 					<div className={styles.details}>
 						<p className={styles.location}>{location}</p>
 						<p className={styles.date}>{dateFormat(job.date)}</p>
