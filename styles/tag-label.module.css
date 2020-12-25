@@ -1,8 +1,15 @@
 .tagLabel {
 	border-radius: 5px;
-	font-size: 14px;
-	padding: 0 8px;
+	border: 2px solid black;
+	color: black;
+	font-size: 12px;
+	padding: 0 6px;
 	font-weight: 700;
-	margin-right: 5px;
-	letter-spacing: 1.1px;
+	margin: 0 5px 5px 0;
+	letter-spacing: 0.3px;
+}
+
+.tagLabel:hover {
+	color: white;
+	background-color: black;
 }

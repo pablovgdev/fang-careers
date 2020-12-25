@@ -3,6 +3,7 @@
 	border-bottom: 1px solid rgba(0, 0, 0, 0.3);
 	cursor: pointer;
 	border-radius: 0px;
+	display: flex;
 }
 
 .logo {

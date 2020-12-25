@@ -22,7 +22,7 @@ export default function JobCard({ job }: JobProps) {
 		if (job.tags.length) {
 			return (
 				<div className={styles.tags}>
-					{job.tags.map(tag => <TagLabel value={tag.value} companyStyle={companyStyle} />)}
+					{job.tags.map(tag => <TagLabel value={tag.value} />)}
 				</div>
 			)
 		} else {
