@@ -1,3 +1,5 @@
+import { Tag } from "./tags";
+
 export interface Job {
 	id: string;
 	company: string;
@@ -8,13 +10,4 @@ export interface Job {
 	tags: Tag[];
 	date: string;
 	url: string;
-}
-
-export interface Tag {
-	value: string;
-	type: TAG_TYPE;
-}
-
-export enum TAG_TYPE {
-	PROGRAMMING_LANGUAGE = "PROGRAMMING_LANGUAGE"
 }

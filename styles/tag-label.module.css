@@ -1,7 +1,7 @@
 .tagLabel {
 	border-radius: 5px;
-	border: 2px solid black;
-	color: black;
+	border: 2px solid dimgray;
+	color: dimgray;
 	font-size: 12px;
 	padding: 0 6px;
 	font-weight: 700;
@@ -11,5 +11,5 @@
 
 .tagLabel:hover {
 	color: white;
-	background-color: black;
+	background-color: dimgray;
 }

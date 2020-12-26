@@ -1,9 +1,7 @@
 import React from "react";
+import { ChildrenProps } from "../models/props";
 import styles from "../styles/container.module.css";
-interface ContainerProps {
-	children: JSX.Element[] | JSX.Element;
-}
 
-export default function Container({ children }: ContainerProps) {
+export default function Container({ children }: ChildrenProps) {
 	return <div className={styles.container}>{children}</div>
 }

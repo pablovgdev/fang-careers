@@ -39,12 +39,12 @@
 }
 
 .details {
-	color:rgba(0, 0, 0, 0.666);
+	color: rgba(0, 0, 0, 0.666);
 	font-size: 14px;
 }
 
 .date {
-	margin-top: 10px; 
+	margin-top: 10px;
 }
 
 .description {
@@ -53,15 +53,15 @@
 	border-bottom: 1px solid rgba(0, 0, 0, 0.5);
 }
 
-.description p {
+/* .description p {
 	overflow-wrap: break-word;
 	word-wrap: break-word;
 	hyphens: auto;
-}
+} */
 
 .description h2 {
 	margin-top: 20px;
-} 
+}
 
 .description ul {
 	margin-bottom: 20px;
@@ -77,14 +77,12 @@
 		display: flex;
 		justify-content: space-between;
 	}
-	
 	.location {
 		text-align: left;
 	}
-
 	.date {
 		min-width: 120px;
-		margin-top: 0; 
+		margin-top: 0;
 		text-align: right;
 	}
 }
@@ -94,27 +92,22 @@
 		border-top-left-radius: 5px;
 		border-bottom-left-radius: 5px;
 	}
-
 	.logo img {
 		border-top-left-radius: 5px;
 		border-bottom-left-radius: 5px;
 	}
-
 	.card {
 		margin-top: 10px;
 		border-radius: 5px;
 		border: none;
 	}
-
 	.description {
 		border: none;
 	}
-
 	.logo img {
 		border-top-left-radius: 5px;
 		border-bottom-left-radius: 5px;
 	}
-
 	.date {
 		width: auto;
 	}

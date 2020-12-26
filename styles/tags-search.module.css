@@ -1,0 +1,67 @@
+.tagsSearch {
+	width: 100%;
+	max-width: 100%;
+	position: relative;
+}
+
+.search {
+	width: 100%;
+	display: flex;
+	background-color: white;
+	border: 2px solid dimgray;
+	padding: 5px;
+	font-size: 14px;
+}
+
+.tags {
+	display: flex;
+}
+
+.tag {
+	font-size: 12px;
+	border-radius: 5px;
+	padding: 2px 6px;
+	background-color: dimgray;
+	color: white;
+	font-weight: 700;
+	margin: 0 5px 0 0;
+	cursor: pointer;
+}
+
+.searchInput {
+	width: 100%;
+	border: none;
+	outline: none;
+	padding: 2px 6px;
+}
+
+.options {
+	width: 100%;
+	position: absolute;
+	border: 2px solid dimgray;
+	margin-top: 5px;
+	border-radius: 5px;
+	background-color: white;
+}
+
+.option {
+	padding: 2px 6px;
+	font-weight: 700;
+	cursor: pointer;
+	color: dimgray;
+}
+
+.option:not(:last-child) {
+	border-bottom: 2px solid dimgray;
+}
+
+.option:hover {
+	color: white;
+	background-color: dimgray;
+}
+
+@media (min-width: 769px) {
+	.search {
+		border-radius: 5px;
+	}
+}

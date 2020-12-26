@@ -22,7 +22,7 @@ export default function JobCard({ job }: JobProps) {
 		if (job.tags.length) {
 			return (
 				<div className={styles.tags}>
-					{job.tags.map(tag => <TagLabel value={tag.value} />)}
+					{job.tags.map(tag => <TagLabel tag={tag} key={tag.value} />)}
 				</div>
 			)
 		} else {
@@ -46,7 +46,7 @@ export default function JobCard({ job }: JobProps) {
 				</section>
 			</div>
 			<div className={styles.description} style={{ display: open ? "block" : "none" }}>
-				<p>{ReactHtmlParser(job.description)}</p>
+				<div>{ReactHtmlParser(job.description)}</div>
 			</div>
 		</>
 	);

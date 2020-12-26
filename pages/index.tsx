@@ -1,7 +1,7 @@
 import axios from "axios";
 import React from "react";
 import Container from "../components/container";
-import JobList from "../components/job-list";
+import JobsContainer from "../components/jobs-container";
 import Landing from "../components/landing";
 import { Job } from "../models/job";
 
@@ -11,12 +11,10 @@ interface JobsPageProps {
 
 export default function JobsPage({ jobs }: JobsPageProps) {
 	return (
-		<>
+		<Container>
 			<Landing />
-			<Container>
-				<JobList jobs={jobs} />
-			</Container>
-		</>
+			<JobsContainer jobsProps={jobs} />
+		</Container>
 	);
 }
 
