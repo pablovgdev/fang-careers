@@ -38,13 +38,11 @@
 .options {
 	width: 100%;
 	position: absolute;
-	margin-top: 1px;
 	background-color: white;
 }
 
 .option {
 	padding: 2px 6px;
-	font-weight: 700;
 	cursor: pointer;
 	color: gray;
 	border-bottom: 1px solid gray;
