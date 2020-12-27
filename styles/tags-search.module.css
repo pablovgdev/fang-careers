@@ -5,10 +5,10 @@
 }
 
 .search {
+	border-bottom: 1px solid gray;
 	width: 100%;
 	display: flex;
 	background-color: white;
-	border: 2px solid dimgray;
 	padding: 5px;
 	font-size: 14px;
 }
@@ -38,9 +38,7 @@
 .options {
 	width: 100%;
 	position: absolute;
-	border: 2px solid dimgray;
-	margin-top: 5px;
-	border-radius: 5px;
+	margin-top: 1px;
 	background-color: white;
 }
 
@@ -48,20 +46,29 @@
 	padding: 2px 6px;
 	font-weight: 700;
 	cursor: pointer;
-	color: dimgray;
-}
-
-.option:not(:last-child) {
-	border-bottom: 2px solid dimgray;
+	color: gray;
+	border-bottom: 1px solid gray;
 }
 
 .option:hover {
 	color: white;
-	background-color: dimgray;
+	background-color: gray;
 }
 
 @media (min-width: 769px) {
 	.search {
+		border: 2px solid gray;
 		border-radius: 5px;
+	}
+	.options {
+		border: 2px solid gray;
+		margin-top: 5px;
+		border-radius: 5px;
+	}
+	.option {
+		border-bottom: none;
+	}
+	.option:not(:last-child) {
+		border-bottom: 2px solid gray;
 	}
 }

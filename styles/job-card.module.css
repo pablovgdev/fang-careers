@@ -1,6 +1,6 @@
 .card {
 	display: flex;
-	border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+	border-bottom: 1px solid gray;
 	cursor: pointer;
 	border-radius: 0px;
 	display: flex;
@@ -39,7 +39,7 @@
 }
 
 .details {
-	color: rgba(0, 0, 0, 0.666);
+	color: gray;
 	font-size: 14px;
 }
 
@@ -50,14 +50,14 @@
 .description {
 	padding: 20px;
 	background-color: white;
-	border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+	border-bottom: 1px solid gray;
 }
 
-/* .description p {
+.description p {
 	overflow-wrap: break-word;
 	word-wrap: break-word;
 	hyphens: auto;
-} */
+}
 
 .description h2 {
 	margin-top: 20px;

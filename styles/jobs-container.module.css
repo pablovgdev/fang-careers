@@ -4,3 +4,9 @@
 	justify-content: center;
 	width: 768px;
 }
+
+@media (min-width: 769px) {
+	.jobContainer {
+		margin: 50px 0;
+	}
+}

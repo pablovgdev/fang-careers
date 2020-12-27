@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ReactHtmlParser from "react-html-parser";
 import { Job } from "../models/job";
 import styles from "../styles/job-card.module.css";
-import { dateFormat, getCompanyStyle } from "../util/util";
+import { dateFormat, getCompanyStyle } from "../utils/util";
 import TagLabel from "./tag-label";
 
 interface JobProps {
