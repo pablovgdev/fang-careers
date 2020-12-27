@@ -1,3 +1,25 @@
 .jobSearch {
 	width: 100%;
 }
+
+.filters {
+	display: flex;
+	flex-direction: column;
+}
+
+.filters>div {
+	width: 100%;
+}
+
+@media (min-width: 769px) {
+	.filters {
+		flex-direction: row;
+		margin-bottom: 5px;
+	}
+	.filters>div:nth-child(1) {
+		margin-right: 2.5px;
+	}
+	.filters>div:nth-child(2) {
+		margin-left: 2.5px;
+	}
+}

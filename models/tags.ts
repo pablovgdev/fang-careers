@@ -45,7 +45,6 @@ export const allTags = [
 	},
 	{
 		type: TAG_TYPE.PLATFORM,
-
 		tags: ["AWS",
 			"GCP",
 			"AZURE",
@@ -54,7 +53,6 @@ export const allTags = [
 	},
 	{
 		type: TAG_TYPE.FRAMEWORK,
-
 		tags: ["REACT",
 			"VUE",
 			"ANGULAR",
@@ -65,7 +63,6 @@ export const allTags = [
 	},
 	{
 		type: TAG_TYPE.TECHNOLOGY,
-
 		tags: ["NOSQL",
 			"SQL",
 			"NODE",

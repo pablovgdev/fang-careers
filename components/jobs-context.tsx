@@ -4,9 +4,14 @@ import { Tag } from "../models/tags";
 
 export interface JobsContext {
 	jobs: Job[];
-	setJobs: Dispatch<SetStateAction<Job[]>>;
-	tags: Tag[];
-	setTags: Dispatch<SetStateAction<Tag[]>>;
+	locations: string[];
+	companies: string[];
+	locationFilter: string;
+	setLocationFilter: Dispatch<SetStateAction<string>>;
+	companyFilter: string;
+	setCompanyFilter: Dispatch<SetStateAction<string>>;
+	tags: string[];
+	setTags: Dispatch<SetStateAction<string[]>>;
 }
 
 export const JobsContext = createContext({} as JobsContext);

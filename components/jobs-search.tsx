@@ -1,11 +1,17 @@
 import React from "react";
 import styles from "../styles/jobs-search.module.css";
-import TagsSearch from "./tags-search";
+import CompanyFilter from "./company-filter";
+import LocationFilter from "./location-filter";
+import TagSearch from "./tag-search";
 
 export default function JobsSearch() {
 	return (
 		<div className={styles.jobSearch}>
-			<TagsSearch />
+			<div className={styles.filters}>
+				<CompanyFilter />
+				<LocationFilter />
+			</div>
+			<TagSearch />
 		</div>
 	);
 }
