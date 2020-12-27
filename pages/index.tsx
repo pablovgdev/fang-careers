@@ -16,7 +16,7 @@ export default function JobsPage({ jobs }: JobsPageProps) {
 	return (
 		<>
 			<Head>
-				<title>FANG careers</title>
+				<title>FANG</title>
 			</Head>
 			<Container>
 				<Landing />
@@ -34,7 +34,6 @@ export async function getStaticProps(): Promise<GetStaticPropsResult<Params>> {
 	if (!jobs) {
 		return { notFound: true };
 	} else {
-		console.log("Loaded props");
 		return { props: { jobs }, revalidate: 86400 };
 	}
 }
