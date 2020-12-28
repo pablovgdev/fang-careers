@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import Select, { OptionTypeBase, ValueType } from "react-select";
 import { allTags } from "../models/tags";
+import { reactSelectStyles } from "../utils/styles";
 import { JobsContext } from "./jobs-context";
 
 export default function TagSearch() {
@@ -22,6 +23,7 @@ export default function TagSearch() {
 			placeholder="Tags"
 			inputId="tags"
 			options={options}
+			styles={reactSelectStyles}
 			isClearable={true}
 			isMulti={true}
 			onChange={onChange}

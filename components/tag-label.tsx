@@ -22,8 +22,8 @@ export default function TagLabel({ tag }: TagProps) {
 			className={styles.tagLabel}
 			key={tag}
 			style={{
-				color: isSelected() ? "white" : "dimgray",
-				backgroundColor: isSelected() ? "dimgray" : "white"
+				color: isSelected() ? "white" : "gray",
+				backgroundColor: isSelected() ? "gray" : "white"
 			}}
 		>
 			{tag}

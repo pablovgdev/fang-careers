@@ -4,6 +4,7 @@
 	cursor: pointer;
 	border-radius: 0px;
 	display: flex;
+	background-color: white;
 }
 
 .logo {
@@ -18,8 +19,7 @@
 
 .section {
 	width: 100%;
-	padding: 20px;
-	background-color: white;
+	margin: 20px;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
@@ -89,8 +89,8 @@
 
 @media (min-width: 769px) {
 	.logo {
-		border-top-left-radius: 5px;
-		border-bottom-left-radius: 5px;
+		border-top-left-radius: 3px;
+		border-bottom-left-radius: 3px;
 	}
 	.logo img {
 		border-top-left-radius: 5px;
@@ -99,14 +99,12 @@
 	.card {
 		margin-top: 10px;
 		border-radius: 5px;
-		border: none;
+		border: 1px solid lightgray;
 	}
 	.description {
-		border: none;
-	}
-	.logo img {
-		border-top-left-radius: 5px;
-		border-bottom-left-radius: 5px;
+		border-radius: 5px;
+		border: 1px solid lightgray;
+		border-top: none;
 	}
 	.date {
 		width: auto;
