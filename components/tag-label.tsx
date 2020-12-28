@@ -1,4 +1,4 @@
-import React, { MouseEvent, useContext } from "react";
+import React, { useContext } from "react";
 import styles from "../styles/tag-label.module.css";
 import { JobsContext } from "./jobs-context";
 
@@ -7,14 +7,10 @@ interface TagProps {
 }
 
 export default function TagLabel({ tag }: TagProps) {
-	const { tags } = useContext(JobsContext);
+	const { tagsFilter } = useContext(JobsContext);
 
 	function isSelected() {
-		if (!tags.find(currentTag => currentTag === tag)) {
-			return false;
-		} else {
-			return true;
-		}
+		return tagsFilter.includes(tag);
 	}
 
 	return (

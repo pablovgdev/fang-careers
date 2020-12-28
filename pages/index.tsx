@@ -8,24 +8,24 @@ import JobsContainer from "../components/jobs-container";
 import { JobsContext } from "../components/jobs-context";
 import Landing from "../components/landing";
 import { Job } from "../models/job";
-import { Tag } from "../models/tags";
 
 interface JobsPageProps {
 	jobs: Job[];
-	locations: string[];
 	companies: string[];
+	locations: string[];
+	tags: string[];
 }
 
-export default function JobsPage({ jobs, locations, companies }: JobsPageProps) {
-	const [locationFilter, setLocationFilter] = useState("");
+export default function JobsPage({ jobs, companies, locations, tags }: JobsPageProps) {
 	const [companyFilter, setCompanyFilter] = useState("");
-	const [tags, setTags] = useState([] as string[]);
+	const [locationFilter, setLocationFilter] = useState("");
+	const [tagsFilter, setTagsFilter] = useState([] as string[]);
 
 	const jobsContext: JobsContext = {
-		jobs, locations, companies,
+		jobs, companies, locations, tags,
 		locationFilter, setLocationFilter,
 		companyFilter, setCompanyFilter,
-		tags, setTags
+		tagsFilter, setTagsFilter
 	};
 
 	return (
@@ -48,13 +48,18 @@ export async function getStaticProps(): Promise<GetStaticPropsResult<Params>> {
 	const response = await axios.get<Job[]>(url);
 	const jobs = response.data;
 
+	const companies: string[] = [];
+	const locations: string[] = [];
+	const tags: string[] = [];
+
 	if (!jobs) {
 		return { notFound: true };
 	} else {
-		const locations: string[] = [];
-		const companies: string[] = [];
-
 		for (const job of jobs) {
+			if (!companies.includes(job.company)) {
+				companies.push(job.company);
+			}
+
 			for (const location of job.locations) {
 				const parts = location.split(",");
 
@@ -67,14 +72,17 @@ export async function getStaticProps(): Promise<GetStaticPropsResult<Params>> {
 				}
 			}
 
-			if (!companies.includes(job.company)) {
-				companies.push(job.company);
+			for (const tag of job.tags) {
+				if (!tags.includes(tag.value.toUpperCase())) {
+					tags.push(tag.value.toUpperCase())
+				}
 			}
-
-			locations.sort();
-			companies.sort();
 		}
 
-		return { props: { jobs, locations, companies }, revalidate: 86400 };
+		companies.sort();
+		locations.sort();
+		tags.sort()
+
+		return { props: { jobs, companies, locations, tags }, revalidate: 86400 };
 	}
 }

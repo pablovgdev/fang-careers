@@ -6,7 +6,7 @@ import { JobsContext } from "./jobs-context";
 
 
 export default function JobsList() {
-	const { jobs, tags, companyFilter, locationFilter } = useContext(JobsContext);
+	const { jobs, tagsFilter, companyFilter, locationFilter } = useContext(JobsContext);
 	const [filteredJobs, setFilteredJobs] = useState(jobs);
 
 	useEffect(() => {
@@ -28,9 +28,9 @@ export default function JobsList() {
 			});
 		}
 
-		if (tags.length) {
+		if (tagsFilter.length) {
 			newJobs = newJobs.filter(job => {
-				for (const tag of tags) {
+				for (const tag of tagsFilter) {
 					if (!job.tags.find(jobTag => jobTag.value === tag)) {
 						return false;
 					}
@@ -41,7 +41,7 @@ export default function JobsList() {
 		}
 
 		setFilteredJobs(newJobs);
-	}, [tags, companyFilter, locationFilter]);
+	}, [companyFilter, locationFilter, tagsFilter]);
 
 	return (
 		<div className={styles.jobList}>
