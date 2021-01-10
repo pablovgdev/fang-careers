@@ -2,9 +2,20 @@
 	border-radius: 5px;
 	border: 2px solid gray;
 	color: gray;
+	background-color: white;
 	font-size: 12px;
 	padding: 0 6px;
 	font-weight: 700;
 	margin: 0 5px 5px 0;
 	letter-spacing: 0.3px;
+}
+
+.tagLabel.selected {
+	color: white;
+	background-color: gray;
+}
+
+.tagLabel.unselected {
+	color: gray;
+	background-color: white;
 }
