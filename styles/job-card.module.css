@@ -1,112 +1,144 @@
 .card {
-	display: flex;
-	border-bottom: 1px solid gray;
-	cursor: pointer;
-	border-radius: 0px;
-	display: flex;
-	background-color: white;
+  display: flex;
+  border-bottom: 1px solid gray;
+  cursor: pointer;
+  border-radius: 0px;
+  display: flex;
+  background-color: white;
 }
 
 .logo {
-	display: flex;
-	align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .logo img {
-	width: 80px;
-	height: 80px;
+  width: 80px;
+  height: 80px;
 }
 
 .section {
-	width: 100%;
-	margin: 20px;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
+  width: 100%;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .section div {
-	margin-top: 10px;
+  margin-top: 10px;
 }
 
 .title {
-	font-size: 16px;
+  font-size: 16px;
 }
 
 .tags {
-	display: flex;
-	flex-flow: row wrap;
+  display: flex;
+  flex-flow: row wrap;
 }
 
 .details {
-	color: gray;
-	font-size: 14px;
+  color: gray;
+  font-size: 14px;
 }
 
 .date {
-	margin-top: 10px;
+  margin-top: 10px;
 }
 
 .description {
-	padding: 20px;
-	background-color: white;
-	border-bottom: 1px solid gray;
+  padding: 20px;
+  background-color: white;
+  border-bottom: 1px solid gray;
 }
 
 .description p {
-	overflow-wrap: break-word;
-	word-wrap: break-word;
-	hyphens: auto;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+}
+
+.description.open {
+  display: block;
+}
+
+.description.close {
+  display: none;
 }
 
 .description h2 {
-	margin-top: 20px;
+  margin-top: 20px;
 }
 
 .description ul {
-	margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .description li {
-	margin-left: 30px;
-	margin-top: 10px;
+  margin-left: 30px;
+  margin-top: 10px;
 }
 
 @media (min-width: 576px) {
-	.details {
-		display: flex;
-		justify-content: space-between;
-	}
-	.location {
-		text-align: left;
-	}
-	.date {
-		min-width: 120px;
-		margin-top: 0;
-		text-align: right;
-	}
+  .details {
+    display: flex;
+    justify-content: space-between;
+  }
+  .location {
+    text-align: left;
+  }
+  .date {
+    min-width: 120px;
+    margin-top: 0;
+    text-align: right;
+  }
 }
 
 @media (min-width: 769px) {
-	.logo {
-		border-top-left-radius: 3px;
-		border-bottom-left-radius: 3px;
-	}
-	.logo img {
-		border-top-left-radius: 5px;
-		border-bottom-left-radius: 5px;
-	}
-	.card {
-		margin-top: 10px;
-		border-radius: 5px;
-		border: 1px solid lightgray;
-	}
-	.description {
-		border-radius: 5px;
-		border: 1px solid lightgray;
-		border-top: none;
-	}
-	.date {
-		width: auto;
-	}
+  .logo {
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+  }
+  .logo.open {
+    border-bottom-left-radius: 0px;
+  }
+  .logo.close {
+    border-bottom-left-radius: 5px;
+  }
+  .logo img {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+  }
+  .card {
+    margin-top: 10px;
+    border-radius: 5px;
+    border: 1px solid lightgray;
+  }
+  .card.open {
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+  }
+  .card.close {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+  }
+  .description {
+    border-radius: 5px;
+    border: 1px solid lightgray;
+    border-top: none;
+  }
+  .description.open {
+    display: block;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+  }
+  .description.close {
+    display: none;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+  }
+  .date {
+    width: auto;
+  }
 }

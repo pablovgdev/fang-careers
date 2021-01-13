@@ -30,20 +30,19 @@ export default function JobCard({ job }: JobProps) {
 		}
 	}
 
+	function openClose() {
+		return open ? styles.open : styles.close;
+	}
+
 	return (
 		<>
 			<div
-				className={styles.card}
+				className={`${styles.card} ${openClose()}`}
 				onClick={toggleDescription}
-				style={{
-					borderBottomLeftRadius: open ? "0px" : "5px",
-					borderBottomRightRadius: open ? "0px" : "5px"
-				}}
 			>
-				<div className={styles.logo} style={{
-					backgroundColor: companyStyle.background,
-					borderBottomLeftRadius: open ? "0px" : "5px",
-				}}
+				<div
+					className={`${styles.logo} ${openClose()}`}
+					style={{ backgroundColor: companyStyle.background }}
 				>
 					<img src={companyStyle.logo} alt="logo" />
 				</div>
@@ -56,14 +55,7 @@ export default function JobCard({ job }: JobProps) {
 					</div>
 				</section>
 			</div>
-			<div
-				className={styles.description}
-				style={{
-					display: open ? "block" : "none",
-					borderTopLeftRadius: open ? "0px" : "5px",
-					borderTopRightRadius: open ? "0px" : "5px"
-				}}
-			>
+			<div className={`${styles.description} ${openClose()}`}>
 				<div>{ReactHtmlParser(job.description)}</div>
 			</div>
 		</>

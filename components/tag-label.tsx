@@ -13,14 +13,14 @@ export default function TagLabel({ tag }: TagProps) {
 		return tagsFilter.includes(tag);
 	}
 
+	function selectedUnselected() {
+		return isSelected() ? styles.selected : styles.unselected;
+	}
+
 	return (
 		<span
-			className={styles.tagLabel}
+			className={`${styles.tagLabel} ${selectedUnselected()}`}
 			key={tag}
-			style={{
-				color: isSelected() ? "white" : "gray",
-				backgroundColor: isSelected() ? "gray" : "white"
-			}}
 		>
 			{tag}
 		</span>
