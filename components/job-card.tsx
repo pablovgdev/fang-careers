@@ -7,6 +7,7 @@ import TagLabel from "./tag-label";
 
 interface StyledJobCardProps {
   background: string;
+  hover: string
 }
 
 const StyledJobCard = styled.div<StyledJobCardProps>`
@@ -19,7 +20,10 @@ const StyledJobCard = styled.div<StyledJobCardProps>`
     border: none;
     border-radius: 5px;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    transition: all .5s ease;
+    transition: all .1s ease;
+    &:hover {
+      background-color: ${props => props.hover};
+    }
   }
 `;
 
@@ -160,7 +164,7 @@ export default function JobCard({ job }: JobProps) {
   };
 
   return (
-    <StyledJobCard background={companyStyle.background}>
+    <StyledJobCard background={companyStyle.background} hover={companyStyle.hover}>
       <StyledHeader open={open} onClick={toggleDescription}>
         <StyledLogo>
           <img src={companyStyle.logo} alt="logo" />
