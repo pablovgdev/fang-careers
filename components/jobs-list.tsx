@@ -1,9 +1,15 @@
+import styled from "@emotion/styled";
 import React, { useContext, useEffect, useState } from "react";
 import InfiniteScroll from 'react-infinite-scroller';
 import { Job } from "../models/job";
-import styles from "../styles/jobs-list.module.css";
 import JobCard from "./job-card";
 import { JobsContext } from "./jobs-context";
+
+const StyledJobList = styled.div`
+  width: 100%;
+	display: flex;
+	flex-direction: column;
+`;
 
 export default function JobsList() {
   const { jobs, tagsFilter, companyFilter, locationFilter } = useContext(JobsContext);
@@ -52,7 +58,7 @@ export default function JobsList() {
   }
 
   return (
-    <div className={styles.jobList}>
+    <StyledJobList>
       <InfiniteScroll
         pageStart={0}
         loadMore={nextJobs}
@@ -60,6 +66,6 @@ export default function JobsList() {
       >
         {infiniteJobs.map(job => <JobCard key={job.id} job={job} />)}
       </InfiniteScroll>
-    </div>
+    </StyledJobList>
   );
 }

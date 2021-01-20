@@ -1,11 +1,35 @@
+import styled from "@emotion/styled";
 import React, { useContext } from "react";
 import { CompanyStyle } from "../models/company-style";
-import styles from "../styles/tag-label.module.css";
 import { JobsContext } from "./jobs-context";
 
+interface StyledTagLabelProps {
+  selected: boolean;
+  primary: string;
+  secondary: string;
+}
+
+const StyledTagLabel = styled.span<StyledTagLabelProps>`
+  border-radius: 5px;
+  border: 2px solid;
+  font-size: 12px;
+  padding: 0 6px;
+  font-weight: 700;
+  margin: 0 5px 5px 0;
+  letter-spacing: 0.3px;
+  height: 30px;
+  border-color: ${props => props.primary};
+  color: ${props => props.selected ? props.secondary : props.primary};
+  background-color: ${props => props.selected ? props.primary : props.secondary};
+  &:hover {
+    color: ${props => props.selected ? props.primary : props.secondary};
+    background-color: ${props => props.selected ? props.secondary : props.primary};
+  }
+`;
+
 interface TagProps {
-  tag: string,
-  companyStyle: CompanyStyle
+  tag: string;
+  companyStyle: CompanyStyle;
 }
 
 export default function TagLabel({ tag, companyStyle }: TagProps) {
@@ -16,16 +40,13 @@ export default function TagLabel({ tag, companyStyle }: TagProps) {
   }
 
   return (
-    <span
-      className={styles.tagLabel}
-      style={{
-        borderColor: companyStyle.primary,
-        color: isSelected() ? companyStyle.background : companyStyle.primary,
-        backgroundColor: isSelected() ? companyStyle.primary : companyStyle.background
-      }}
+    <StyledTagLabel
       key={tag}
+      selected={isSelected()}
+      primary={companyStyle.primary}
+      secondary={companyStyle.background}
     >
       {tag}
-    </span>
+    </StyledTagLabel>
   );
 }
