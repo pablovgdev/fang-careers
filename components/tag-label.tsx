@@ -20,10 +20,12 @@ const StyledTagLabel = styled.span<StyledTagLabelProps>`
   height: 30px;
   border-color: ${props => props.primary};
   color: ${props => props.selected ? props.secondary : props.primary};
-  background-color: ${props => props.selected ? props.primary : props.secondary};
-  &:hover {
-    color: ${props => props.selected ? props.primary : props.secondary};
-    background-color: ${props => props.selected ? props.secondary : props.primary};
+  background-color: ${props => props.selected ? props.primary : "transparent"};
+  @media (min-width: 768px) {
+    &:hover {
+      color: ${props => props.selected ? props.primary : props.secondary};
+      background-color: ${props => props.selected ? props.secondary : props.primary};
+    }
   }
 `;
 
