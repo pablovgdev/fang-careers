@@ -12,7 +12,7 @@ const StyledJobList = styled.div`
 `;
 
 export default function JobsList() {
-  const { jobs, tagsFilter, companyFilter, locationFilter } = useContext(JobsContext);
+  const { jobs, tagsFilter } = useContext(JobsContext);
 
   const emptyJobs: Job[] = []
   const [filteredJobs, setFilteredJobs] = useState(emptyJobs);
@@ -20,22 +20,6 @@ export default function JobsList() {
 
   useEffect(() => {
     let newJobs: Job[] = jobs;
-
-    if (companyFilter) {
-      newJobs = newJobs.filter(job => job.company === companyFilter);
-    }
-
-    if (locationFilter) {
-      newJobs = newJobs.filter(job => {
-        for (const location of job.locations) {
-          if (location.includes(locationFilter)) {
-            return true;
-          }
-        }
-
-        return false;
-      });
-    }
 
     if (tagsFilter.length) {
       newJobs = newJobs.filter(job => {
@@ -51,7 +35,7 @@ export default function JobsList() {
 
     setFilteredJobs(newJobs);
     setInfiniteJobs(newJobs.slice(0, 20));
-  }, [companyFilter, locationFilter, tagsFilter]);
+  }, [tagsFilter]);
 
   function nextJobs() {
     setInfiniteJobs(filteredJobs.slice(0, infiniteJobs.length + 20));

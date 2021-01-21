@@ -1,10 +1,8 @@
 import styled from "@emotion/styled";
-import React, { useContext } from "react";
+import React from "react";
 import { CompanyStyle } from "../../models/company-style";
-import { JobsContext } from "../jobs-context";
 
 interface StyledTagProps {
-  selected: boolean;
   primary: string;
   secondary: string;
 }
@@ -19,12 +17,11 @@ const StyledTag = styled.span<StyledTagProps>`
   letter-spacing: 0.3px;
   height: 30px;
   border-color: ${props => props.primary};
-  color: ${props => props.selected ? props.secondary : props.primary};
-  background-color: ${props => props.selected ? props.primary : "transparent"};
+  color: ${props => props.primary};
   @media (min-width: 768px) {
     &:hover {
-      color: ${props => props.selected ? props.primary : props.secondary};
-      background-color: ${props => props.selected ? props.secondary : props.primary};
+      color: ${props => props.secondary};
+      background-color: ${props => props.primary};
     }
   }
 `;
@@ -35,16 +32,9 @@ interface JobTagProps {
 }
 
 export default function JobTag({ tag, companyStyle }: JobTagProps) {
-  const { tagsFilter } = useContext(JobsContext);
-
-  function isSelected() {
-    return tagsFilter.includes(tag);
-  }
-
   return (
     <StyledTag
       key={tag}
-      selected={isSelected()}
       primary={companyStyle.primary}
       secondary={companyStyle.background}
     >

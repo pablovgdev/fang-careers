@@ -62,7 +62,7 @@ export function getCompanyStyle(company: string): CompanyStyle {
         primary: light.primary,
         secondary: light.secondary,
         background: colors.netflix,
-        hover: brighten(colors.netflix, 30)
+        hover: brighten(colors.netflix, 50)
       };
       break;
     case "GOOGLE":

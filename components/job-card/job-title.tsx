@@ -9,6 +9,9 @@ interface StyledTitleProps {
 const StyledTitle = styled.h2<StyledTitleProps>`
   font-size: 16px;
   color: ${props => props.color};
+  @media (min-width: 768px) {
+    padding-left: 10px;
+  }
 `;
 
 interface JobTitleProps {

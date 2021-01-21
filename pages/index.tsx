@@ -7,25 +7,16 @@ import Container from "../components/container";
 import JobsContainer from "../components/jobs-container";
 import { JobsContext } from "../components/jobs-context";
 import { Job } from "../models/job";
+import { TAG_TYPE } from "../models/tags";
 
 interface JobsPageProps {
   jobs: Job[];
-  companies: string[];
-  locations: string[];
   tags: string[];
 }
 
-export default function JobsPage({ jobs, companies, locations, tags }: JobsPageProps) {
-  const [companyFilter, setCompanyFilter] = useState("");
-  const [locationFilter, setLocationFilter] = useState("");
+export default function JobsPage({ jobs, tags }: JobsPageProps) {
   const [tagsFilter, setTagsFilter] = useState([] as string[]);
-
-  const jobsContext: JobsContext = {
-    jobs, companies, locations, tags,
-    locationFilter, setLocationFilter,
-    companyFilter, setCompanyFilter,
-    tagsFilter, setTagsFilter
-  };
+  const jobsContext: JobsContext = { jobs, tags, tagsFilter, setTagsFilter };
 
   return (
     <>
@@ -46,41 +37,43 @@ export async function getStaticProps(): Promise<GetStaticPropsResult<Params>> {
   const response = await axios.get<Job[]>(url);
   const jobs = response.data;
 
-  const companies: string[] = [];
-  const locations: string[] = [];
   const tags: string[] = [];
 
   if (!jobs) {
     return { notFound: true };
   } else {
     for (const job of jobs) {
-      if (!companies.includes(job.company)) {
-        companies.push(job.company);
+      const company = job.company.toUpperCase();
+      job?.tags?.push({ value: company, type: TAG_TYPE.COMPANY });
+
+      if (!tags.includes(company)) {
+        tags.push(company);
       }
 
       for (const location of job.locations) {
-        const parts = location.split(",");
+        const locationParts = location.split(",");
 
-        for (const part of parts) {
-          const cleanPart = part.trim();
+        for (const locationPart of locationParts) {
+          const cleanPart = locationPart.trim().toUpperCase();
+          job?.tags?.push({ value: cleanPart, type: TAG_TYPE.LOCATION });
 
-          if (!locations.includes(cleanPart)) {
-            locations.push(cleanPart);
+          if (!tags.includes(cleanPart)) {
+            tags.push(cleanPart);
           }
         }
       }
 
       for (const tag of job.tags) {
-        if (!tags.includes(tag.value.toUpperCase())) {
-          tags.push(tag.value.toUpperCase())
+        const cleanTag = tag.value.toUpperCase();
+
+        if (!tags.includes(cleanTag)) {
+          tags.push(cleanTag)
         }
       }
     }
 
-    companies.sort();
-    locations.sort();
     tags.sort()
 
-    return { props: { jobs, companies, locations, tags }, revalidate: 86400 };
+    return { props: { jobs, tags }, revalidate: 86400 };
   }
 }

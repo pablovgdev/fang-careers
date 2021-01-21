@@ -4,12 +4,9 @@ import { Job } from "../../models/job";
 import { getCompanyStyle } from "../../utils/util";
 import JobContent from "./job-content";
 import JobDescription from "./job-description";
-import JobLogo from "./job-logo";
-import JobMain from "./job-main";
 
 interface StyledJobCardProps {
   background: string;
-  hover: string
 }
 
 const StyledJobCard = styled.div<StyledJobCardProps>`
@@ -22,10 +19,6 @@ const StyledJobCard = styled.div<StyledJobCardProps>`
     border: none;
     border-radius: 5px;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    transition: all .1s ease;
-    &:hover {
-      background-color: ${props => props.hover};
-    }
   }
 `;
 
@@ -42,7 +35,7 @@ export default function JobCard({ job }: JobProps) {
   };
 
   return (
-    <StyledJobCard background={companyStyle.background} hover={companyStyle.hover}>
+    <StyledJobCard background={companyStyle.background}>
       <JobContent job={job} companyStyle={companyStyle} open={open} onClick={toggleDescription} />
       <JobDescription open={open} description={job.description} />
     </StyledJobCard >

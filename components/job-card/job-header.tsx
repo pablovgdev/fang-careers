@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import React from "react";
 import { CompanyStyle } from "../../models/company-style";
 import { Job } from "../../models/job";
-import JobLocation from "./job-location";
+import JobLocations from "./job-locations";
 import JobTitle from "./job-title";
 
 const StyledHeader = styled.div`
@@ -22,12 +22,12 @@ interface JobHeaderProps {
 }
 
 export default function JobHeader({ job, companyStyle }: JobHeaderProps) {
-  const location = job.locations.map(location => location.split(",")[0]).join(", ");
+  const locations = job.locations.map(location => location.split(",")[0]);
 
   return (
     <StyledHeader>
       <JobTitle title={job.title} color={companyStyle.primary} />
-      <JobLocation location={location} color={companyStyle.secondary} />
+      <JobLocations locations={locations} color={companyStyle.secondary} hover={companyStyle.hover} />
     </StyledHeader>
   )
 }
