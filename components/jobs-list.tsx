@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import React, { useContext, useEffect, useState } from "react";
 import InfiniteScroll from 'react-infinite-scroller';
 import { Job } from "../models/job";
-import JobCard from "./job-card";
+import JobCard from "./job-card/job-card";
 import { JobsContext } from "./jobs-context";
 
 const StyledJobList = styled.div`

@@ -29,14 +29,22 @@ export function getCompanyStyle(company: string): CompanyStyle {
   const dark = { primary: "black", secondary: "gray" };
   const light = { primary: "white", secondary: "whitesmoke" };
 
+  const colors = {
+    facebook: "#1877F2",
+    amazon: "#262F3D",
+    netflix: "#000000",
+    google: "#EEEEEE",
+    fang: "#C20A3E"
+  }
+
   switch (company) {
     case "FACEBOOK":
       companyStyle = {
         logo: "facebook.webp",
         primary: light.primary,
         secondary: light.secondary,
-        background: "#1877F2",
-        hover: brighten("#1877F2", 20)
+        background: colors.facebook,
+        hover: brighten(colors.facebook, 30)
       };
       break;
     case "AMAZON":
@@ -44,8 +52,8 @@ export function getCompanyStyle(company: string): CompanyStyle {
         logo: "amazon.webp",
         primary: light.primary,
         secondary: light.secondary,
-        background: "#262F3D",
-        hover: brighten("#262F3D", 20)
+        background: colors.amazon,
+        hover: brighten(colors.amazon, 30)
       };
       break;
     case "NETFLIX":
@@ -53,8 +61,8 @@ export function getCompanyStyle(company: string): CompanyStyle {
         logo: "netflix.webp",
         primary: light.primary,
         secondary: light.secondary,
-        background: "#000000",
-        hover: brighten("#000000", 20)
+        background: colors.netflix,
+        hover: brighten(colors.netflix, 30)
       };
       break;
     case "GOOGLE":
@@ -62,8 +70,8 @@ export function getCompanyStyle(company: string): CompanyStyle {
         logo: "google.webp",
         primary: dark.primary,
         secondary: dark.secondary,
-        background: "#EEEEEE",
-        hover: brighten("#EEEEEE", -20)
+        background: colors.google,
+        hover: brighten(colors.google, -30)
       };
       break;
     default:
@@ -71,8 +79,8 @@ export function getCompanyStyle(company: string): CompanyStyle {
         logo: "fang.webp",
         primary: "#F2F2F2",
         secondary: "#C20A3E",
-        background: "#C20A3E",
-        hover: brighten("#C20A3E", -20)
+        background: colors.fang,
+        hover: brighten(colors.fang, -30)
       };
       break;
   }
