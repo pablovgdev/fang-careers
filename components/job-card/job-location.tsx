@@ -1,6 +1,5 @@
 import styled from "@emotion/styled";
-import React, { useContext } from "react";
-import { JobsContext } from "../jobs-context";
+import React from "react";
 
 interface StyledLocationProps {
   color: string;
@@ -28,8 +27,6 @@ interface JobLocationProps {
 }
 
 export default function JobLocation({ location, color, hover }: JobLocationProps) {
-  const { tagsFilter, setTagsFilter } = useContext(JobsContext);
-
   return (
     <StyledLocation color={color} hover={hover}>
       {location}
