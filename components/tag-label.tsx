@@ -1,28 +1,54 @@
+import styled from "@emotion/styled";
 import React, { useContext } from "react";
-import styles from "../styles/tag-label.module.css";
+import { CompanyStyle } from "../models/company-style";
 import { JobsContext } from "./jobs-context";
 
-interface TagProps {
-	tag: string
+interface StyledTagLabelProps {
+  selected: boolean;
+  primary: string;
+  secondary: string;
 }
 
-export default function TagLabel({ tag }: TagProps) {
-	const { tagsFilter } = useContext(JobsContext);
+const StyledTagLabel = styled.span<StyledTagLabelProps>`
+  border-radius: 5px;
+  border: 2px solid;
+  font-size: 12px;
+  padding: 0 6px;
+  font-weight: 700;
+  margin: 0 5px 5px 0;
+  letter-spacing: 0.3px;
+  height: 30px;
+  border-color: ${props => props.primary};
+  color: ${props => props.selected ? props.secondary : props.primary};
+  background-color: ${props => props.selected ? props.primary : "transparent"};
+  @media (min-width: 768px) {
+    &:hover {
+      color: ${props => props.selected ? props.primary : props.secondary};
+      background-color: ${props => props.selected ? props.secondary : props.primary};
+    }
+  }
+`;
 
-	function isSelected() {
-		return tagsFilter.includes(tag);
-	}
+interface TagProps {
+  tag: string;
+  companyStyle: CompanyStyle;
+}
 
-	function selectedUnselected() {
-		return isSelected() ? styles.selected : styles.unselected;
-	}
+export default function TagLabel({ tag, companyStyle }: TagProps) {
+  const { tagsFilter } = useContext(JobsContext);
 
-	return (
-		<span
-			className={`${styles.tagLabel} ${selectedUnselected()}`}
-			key={tag}
-		>
-			{tag}
-		</span>
-	);
+  function isSelected() {
+    return tagsFilter.includes(tag);
+  }
+
+  return (
+    <StyledTagLabel
+      key={tag}
+      selected={isSelected()}
+      primary={companyStyle.primary}
+      secondary={companyStyle.background}
+    >
+      {tag}
+    </StyledTagLabel>
+  );
 }

@@ -6,83 +6,74 @@ import React, { useState } from "react";
 import Container from "../components/container";
 import JobsContainer from "../components/jobs-container";
 import { JobsContext } from "../components/jobs-context";
-import Landing from "../components/landing";
 import { Job } from "../models/job";
+import { TAG_TYPE } from "../models/tags";
 
 interface JobsPageProps {
-	jobs: Job[];
-	companies: string[];
-	locations: string[];
-	tags: string[];
+  jobs: Job[];
+  tags: string[];
 }
 
-export default function JobsPage({ jobs, companies, locations, tags }: JobsPageProps) {
-	const [companyFilter, setCompanyFilter] = useState("");
-	const [locationFilter, setLocationFilter] = useState("");
-	const [tagsFilter, setTagsFilter] = useState([] as string[]);
+export default function JobsPage({ jobs, tags }: JobsPageProps) {
+  const [tagsFilter, setTagsFilter] = useState([] as string[]);
+  const jobsContext: JobsContext = { jobs, tags, tagsFilter, setTagsFilter };
 
-	const jobsContext: JobsContext = {
-		jobs, companies, locations, tags,
-		locationFilter, setLocationFilter,
-		companyFilter, setCompanyFilter,
-		tagsFilter, setTagsFilter
-	};
-
-	return (
-		<>
-			<Head>
-				<title>FANG</title>
-			</Head>
-			<Container>
-				<Landing />
-				<JobsContext.Provider value={jobsContext}>
-					<JobsContainer />
-				</JobsContext.Provider>
-			</Container>
-		</>
-	);
+  return (
+    <>
+      <Head>
+        <title>FANG</title>
+      </Head>
+      <Container>
+        <JobsContext.Provider value={jobsContext}>
+          <JobsContainer />
+        </JobsContext.Provider>
+      </Container>
+    </>
+  );
 }
 
 export async function getStaticProps(): Promise<GetStaticPropsResult<Params>> {
-	const url = "https://fang-jobs-scraper.ew.r.appspot.com/jobs/software";
-	const response = await axios.get<Job[]>(url);
-	const jobs = response.data;
+  const url = "https://fang-jobs-scraper.ew.r.appspot.com/jobs/software";
+  const response = await axios.get<Job[]>(url);
+  const jobs = response.data;
 
-	const companies: string[] = [];
-	const locations: string[] = [];
-	const tags: string[] = [];
+  const tags: string[] = [];
 
-	if (!jobs) {
-		return { notFound: true };
-	} else {
-		for (const job of jobs) {
-			if (!companies.includes(job.company)) {
-				companies.push(job.company);
-			}
+  if (!jobs) {
+    return { notFound: true };
+  } else {
+    for (const job of jobs) {
+      const company = job.company.toUpperCase();
+      job?.tags?.push({ value: company, type: TAG_TYPE.COMPANY });
 
-			for (const location of job.locations) {
-				const parts = location.split(",");
+      if (!tags.includes(company)) {
+        tags.push(company);
+      }
 
-				for (const part of parts) {
-					const cleanPart = part.trim();
+      for (const location of job.locations) {
+        const locationParts = location.split(",");
 
-					if (!locations.includes(cleanPart)) {
-						locations.push(cleanPart);
-					}
-				}
-			}
+        for (const locationPart of locationParts) {
+          const cleanPart = locationPart.trim().toUpperCase();
+          job?.tags?.push({ value: cleanPart, type: TAG_TYPE.LOCATION });
 
-			for (const tag of job.tags) {
-				if (!tags.includes(tag.value.toUpperCase())) {
-					tags.push(tag.value.toUpperCase())
-				}
-			}
-		}
+          if (!tags.includes(cleanPart)) {
+            tags.push(cleanPart);
+          }
+        }
+      }
 
-		companies.sort();
-		locations.sort();
-		tags.sort()
+      for (const tag of job.tags) {
+        const cleanTag = tag.value.toUpperCase();
 
-		return { props: { jobs, companies, locations, tags }, revalidate: 86400 };
-	}
+        if (!tags.includes(cleanTag)) {
+          tags.push(cleanTag)
+        }
+      }
+    }
+
+    tags.sort()
+
+    return { props: { jobs, tags }, revalidate: 86400 };
+  }
 }
