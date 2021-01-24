@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import React, { MouseEvent } from "react";
-import { CompanyStyle } from "../../models/company-style";
-import { Job } from "../../models/job";
+import { CompanyStyle } from "../../../models/company-style";
+import { Job } from "../../../models/job";
 import JobLogo from "./job-logo";
 import JobMain from "./job-main";
 
@@ -28,13 +28,13 @@ interface JobContentProps {
   job: Job;
   companyStyle: CompanyStyle;
   open: boolean;
-  onClick: (event: MouseEvent) => void;
+  onMouseDown: (event: MouseEvent) => void;
 }
 
-export default function JobContent({ job, companyStyle, open, onClick }: JobContentProps) {
+export default function JobContent({ job, companyStyle, open, onMouseDown }: JobContentProps) {
   return (
-    <StyledContent open={open} onClick={onClick}>
-      <JobLogo src={companyStyle.logo} hover={companyStyle.hover} />
+    <StyledContent open={open} onMouseDown={onMouseDown}>
+      <JobLogo src={companyStyle.logo} hover={companyStyle.hover} company={job.company} />
       <JobMain job={job} companyStyle={companyStyle} />
     </StyledContent>
   );

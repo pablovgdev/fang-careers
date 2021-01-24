@@ -1,9 +1,9 @@
 import styled from "@emotion/styled";
 import React, { useContext, useEffect, useState } from "react";
 import InfiniteScroll from 'react-infinite-scroller';
-import { Job } from "../models/job";
-import JobCard from "./job-card/job-card";
-import { JobsContext } from "./jobs-context";
+import { Job } from "../../../models/job";
+import { JobsContext } from "../jobs-context";
+import JobCard from "./job-card";
 
 const StyledJobList = styled.div`
   width: 100%;
@@ -11,8 +11,8 @@ const StyledJobList = styled.div`
 	flex-direction: column;
 `;
 
-export default function JobsList() {
-  const { jobs, tagsFilter } = useContext(JobsContext);
+export default function JobList() {
+  const { jobs, tagsFilter, title } = useContext(JobsContext);
 
   const emptyJobs: Job[] = []
   const [filteredJobs, setFilteredJobs] = useState(emptyJobs);
@@ -24,7 +24,7 @@ export default function JobsList() {
     if (tagsFilter.length) {
       newJobs = newJobs.filter(job => {
         for (const tag of tagsFilter) {
-          if (!job.tags.find(jobTag => jobTag.value === tag)) {
+          if (!job.tags.find(jobTag => jobTag.value === tag.value)) {
             return false;
           }
         }
@@ -33,9 +33,18 @@ export default function JobsList() {
       });
     }
 
+    if (title) {
+      newJobs = newJobs.filter(job => {
+        return (
+          job.title.toLowerCase().startsWith(title.toLowerCase()) ||
+          job.title.toLowerCase().includes(title.toLowerCase())
+        )
+      });
+    }
+
     setFilteredJobs(newJobs);
     setInfiniteJobs(newJobs.slice(0, 20));
-  }, [tagsFilter]);
+  }, [tagsFilter, title]);
 
   function nextJobs() {
     setInfiniteJobs(filteredJobs.slice(0, infiniteJobs.length + 20));

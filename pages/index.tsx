@@ -4,19 +4,28 @@ import { Params } from "next/dist/next-server/server/router";
 import Head from "next/head";
 import React, { useState } from "react";
 import Container from "../components/container";
-import JobsContainer from "../components/jobs-container";
-import { JobsContext } from "../components/jobs-context";
+import Jobs from "../components/jobs/jobs";
+import { JobsContext } from "../components/jobs/jobs-context";
 import { Job } from "../models/job";
-import { TAG_TYPE } from "../models/tags";
+import { Tag, TAG_TYPE } from "../models/tags";
 
 interface JobsPageProps {
   jobs: Job[];
-  tags: string[];
+  tags: Tag[];
 }
 
 export default function JobsPage({ jobs, tags }: JobsPageProps) {
-  const [tagsFilter, setTagsFilter] = useState([] as string[]);
-  const jobsContext: JobsContext = { jobs, tags, tagsFilter, setTagsFilter };
+  const [tagsFilter, setTagsFilter] = useState([] as Tag[]);
+  const [options, setOptions] = useState([] as Tag[]);
+  const [query, setQuery] = useState("");
+  const [title, setTitle] = useState("");
+  const jobsContext: JobsContext = {
+    jobs, tags,
+    tagsFilter, setTagsFilter,
+    options, setOptions,
+    query, setQuery,
+    title, setTitle
+  };
 
   return (
     <>
@@ -25,7 +34,7 @@ export default function JobsPage({ jobs, tags }: JobsPageProps) {
       </Head>
       <Container>
         <JobsContext.Provider value={jobsContext}>
-          <JobsContainer />
+          <Jobs />
         </JobsContext.Provider>
       </Container>
     </>
@@ -37,42 +46,51 @@ export async function getStaticProps(): Promise<GetStaticPropsResult<Params>> {
   const response = await axios.get<Job[]>(url);
   const jobs = response.data;
 
-  const tags: string[] = [];
+  const tags: Tag[] = [];
 
   if (!jobs) {
     return { notFound: true };
   } else {
     for (const job of jobs) {
-      const company = job.company.toUpperCase();
-      job?.tags?.push({ value: company, type: TAG_TYPE.COMPANY });
+      const companyTag = {
+        value: job.company.toUpperCase(),
+        type: TAG_TYPE.COMPANY
+      };
+      job?.tags?.push(companyTag);
 
-      if (!tags.includes(company)) {
-        tags.push(company);
+      if (!tags.find(tag => companyTag.value === tag.value)) {
+        tags.push(companyTag);
       }
 
       for (const location of job.locations) {
         const locationParts = location.split(",");
 
         for (const locationPart of locationParts) {
-          const cleanPart = locationPart.trim().toUpperCase();
-          job?.tags?.push({ value: cleanPart, type: TAG_TYPE.LOCATION });
+          const locationTag = {
+            value: locationPart.trim().toUpperCase(),
+            type: TAG_TYPE.LOCATION
+          };
+          job?.tags?.push(locationTag);
 
-          if (!tags.includes(cleanPart)) {
-            tags.push(cleanPart);
+          if (!tags.find(tag => tag.value === locationTag.value)) {
+            tags.push(locationTag);
           }
         }
       }
 
       for (const tag of job.tags) {
-        const cleanTag = tag.value.toUpperCase();
+        const techTag = {
+          value: tag.value.toUpperCase(),
+          type: tag.type
+        };
 
-        if (!tags.includes(cleanTag)) {
-          tags.push(cleanTag)
+        if (!tags.find(tag => tag.value === techTag.value)) {
+          tags.push(techTag);
         }
       }
     }
 
-    tags.sort()
+    // tags.sort();
 
     return { props: { jobs, tags }, revalidate: 86400 };
   }

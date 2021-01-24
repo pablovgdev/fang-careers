@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import React, { useState } from "react";
-import { Job } from "../../models/job";
-import { getCompanyStyle } from "../../utils/util";
+import { Job } from "../../../models/job";
+import { getCompanyStyle } from "../../../utils/util";
 import JobContent from "./job-content";
 import JobDescription from "./job-description";
 
@@ -36,7 +36,7 @@ export default function JobCard({ job }: JobProps) {
 
   return (
     <StyledJobCard background={companyStyle.background}>
-      <JobContent job={job} companyStyle={companyStyle} open={open} onClick={toggleDescription} />
+      <JobContent job={job} companyStyle={companyStyle} open={open} onMouseDown={toggleDescription} />
       <JobDescription open={open} description={job.description} />
     </StyledJobCard >
   );
