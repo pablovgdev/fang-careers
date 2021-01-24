@@ -24,7 +24,7 @@ export default function JobsList() {
     if (tagsFilter.length) {
       newJobs = newJobs.filter(job => {
         for (const tag of tagsFilter) {
-          if (!job.tags.find(jobTag => jobTag.value === tag)) {
+          if (!job.tags.find(jobTag => jobTag.value === tag.value)) {
             return false;
           }
         }

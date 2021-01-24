@@ -34,7 +34,7 @@ interface JobContentProps {
 export default function JobContent({ job, companyStyle, open, onClick }: JobContentProps) {
   return (
     <StyledContent open={open} onClick={onClick}>
-      <JobLogo src={companyStyle.logo} hover={companyStyle.hover} />
+      <JobLogo src={companyStyle.logo} hover={companyStyle.hover} company={job.company} />
       <JobMain job={job} companyStyle={companyStyle} />
     </StyledContent>
   );

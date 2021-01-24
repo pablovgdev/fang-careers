@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import React from "react";
+import JobSearch from "./job-search/job-search";
 import JobsList from "./jobs-list";
-import JobsSearch from "./jobs-search";
 
 const StyledJobsContainer = styled.div`
   display: flex;
@@ -17,7 +17,7 @@ const StyledJobsContainer = styled.div`
 export default function JobsContainer() {
   return (
     <StyledJobsContainer>
-      <JobsSearch />
+      <JobSearch />
       <JobsList />
     </StyledJobsContainer >
   );

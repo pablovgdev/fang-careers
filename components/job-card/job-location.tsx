@@ -1,5 +1,7 @@
 import styled from "@emotion/styled";
-import React from "react";
+import React, { MouseEvent, useContext } from "react";
+import { TAG_TYPE } from "../../models/tags";
+import { JobsContext } from "../jobs-context";
 
 interface StyledLocationProps {
   color: string;
@@ -27,8 +29,26 @@ interface JobLocationProps {
 }
 
 export default function JobLocation({ location, color, hover }: JobLocationProps) {
+  const { tagsFilter, setTagsFilter } = useContext(JobsContext);
+
+  function isSelected() {
+    return !!tagsFilter.find(tagFilter => tagFilter.value === location);
+  }
+
+  function toggleTag(event: MouseEvent) {
+    event.stopPropagation();
+
+    if (isSelected()) {
+      const newTags = tagsFilter.filter(tagFilter => tagFilter.value !== location);
+      setTagsFilter(newTags);
+    } else {
+      const newTags = tagsFilter.concat({ value: location, type: TAG_TYPE.LOCATION });
+      setTagsFilter(newTags);
+    }
+  }
+
   return (
-    <StyledLocation color={color} hover={hover}>
+    <StyledLocation color={color} hover={hover} onClick={toggleTag}>
       {location}
     </StyledLocation>
   )

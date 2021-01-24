@@ -1,46 +1,26 @@
 import styled from "@emotion/styled";
-import React, { useContext } from "react";
-import { ValueType, OptionTypeBase } from "react-select";
-import { Job } from "../../models/job";
-import { JobsContext } from "../jobs-context";
+import React from "react";
+import JobSearchInput from "./job-search-input";
+import JobSearchTags from "./job-search-tags";
 
-const StyledJobSearch = styled.input`
- 
+const StyledJobSearch = styled.div`
+  display: flex;
+  flex-flow: row wrap;
+  width: 100%;
+  background-color: white;
+  min-height: 43px;
+  @media (min-width: 768px) {
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    border-radius: 5px;
+  }
 `;
 
-interface JobSearchProps {
-  job: Job;
-}
 
-export default function JobSearch({ job }: JobSearchProps) {
-  const { tags, setTagsFilter } = useContext(JobsContext);
-
-  const options = tags.map(tag => ({ value: tag, label: tag }));
-
-  function onChange(value: ValueType<OptionTypeBase, true>) {
-    if (value?.length) {
-      const newTags = value.map(item => item.label);
-      setTagsFilter(newTags);
-    } else {
-      setTagsFilter([]);
-    }
-  }
-
+export default function JobSearch() {
   return (
-    <StyledJobSearch >
-
-    </StyledJobSearch >
+    <StyledJobSearch>
+      <JobSearchTags />
+      <JobSearchInput />
+    </StyledJobSearch>
   );
-
-  // return (
-  //   <Select
-  //     placeholder="Tags"
-  //     inputId="tags"
-  //     options={options}
-  //     styles={reactSelectStyles}
-  //     isClearable={true}
-  //     isMulti={true}
-  //     onChange={onChange}
-  //   />
-  // );
 }

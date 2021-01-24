@@ -1,19 +1,21 @@
 import styled from "@emotion/styled";
-import React from "react";
+import React, { MouseEvent, useContext } from "react";
 import { CompanyStyle } from "../../models/company-style";
+import { Tag } from "../../models/tags";
+import { JobsContext } from "../jobs-context";
 
 interface StyledTagProps {
   primary: string;
   secondary: string;
 }
 
-const StyledTag = styled.span<StyledTagProps>`
+const StyledTag = styled.div<StyledTagProps>`
   border-radius: 5px;
   border: 2px solid;
-  font-size: 12px;
+  margin: 2.5px;
   padding: 0 6px;
+  font-size: 12px;
   font-weight: 700;
-  margin: 0 5px 5px 0;
   letter-spacing: 0.3px;
   height: 30px;
   border-color: ${props => props.primary};
@@ -27,18 +29,36 @@ const StyledTag = styled.span<StyledTagProps>`
 `;
 
 interface JobTagProps {
-  tag: string;
+  tag: Tag;
   companyStyle: CompanyStyle;
 }
 
 export default function JobTag({ tag, companyStyle }: JobTagProps) {
+  const { tagsFilter, setTagsFilter } = useContext(JobsContext);
+
+  function isSelected() {
+    return !!tagsFilter.find(tagFilter => tagFilter.value === tag.value);
+  }
+
+  function toggleTag(event: MouseEvent) {
+    event.stopPropagation();
+
+    if (isSelected()) {
+      const newTags = tagsFilter.filter(tagFilter => tagFilter.value !== tag.value);
+      setTagsFilter(newTags);
+    } else {
+      const newTags = tagsFilter.concat(tag);
+      setTagsFilter(newTags);
+    }
+  }
+
   return (
     <StyledTag
-      key={tag}
       primary={companyStyle.primary}
       secondary={companyStyle.background}
+      onClick={toggleTag}
     >
-      {tag}
+      {tag.value}
     </StyledTag>
   );
 }

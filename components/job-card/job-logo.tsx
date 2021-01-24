@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
-import React from "react";
-
+import React, { MouseEvent, useContext } from "react";
+import { TAG_TYPE } from "../../models/tags";
+import { JobsContext } from "../jobs-context";
 
 const StyledLogoContainer = styled.div`
   display: flex;
@@ -32,12 +33,31 @@ const StyledLogo = styled.div<StyledLogoProps>`
 interface JobLogoProps {
   src: string;
   hover: string;
+  company: string;
 }
 
-export default function JobLogo({ src, hover }: JobLogoProps) {
+export default function JobLogo({ src, hover, company }: JobLogoProps) {
+  const { tagsFilter, setTagsFilter } = useContext(JobsContext);
+
+  function isSelected() {
+    return !!tagsFilter.find(tagFilter => tagFilter.value === company);
+  }
+
+  function toggleTag(event: MouseEvent) {
+    event.stopPropagation();
+
+    if (isSelected()) {
+      const newTags = tagsFilter.filter(tagFilter => tagFilter.value !== company);
+      setTagsFilter(newTags);
+    } else {
+      const newTags = tagsFilter.concat({ value: company, type: TAG_TYPE.COMPANY });
+      setTagsFilter(newTags);
+    }
+  }
+
   return (
     <StyledLogoContainer>
-      <StyledLogo hover={hover}>
+      <StyledLogo hover={hover} onClick={toggleTag}>
         <img src={src} alt="logo" />
       </StyledLogo>
     </StyledLogoContainer>
