@@ -1,8 +1,8 @@
 import styled from "@emotion/styled";
 import React from "react";
-import { CompanyStyle } from "../../models/company-style";
-import { Job } from "../../models/job";
-import { TAG_TYPE } from "../../models/tags";
+import { CompanyStyle } from "../../../models/company-style";
+import { Job } from "../../../models/job";
+import { TAG_TYPE } from "../../../models/tags";
 import JobTag from "./job-tag";
 
 const StyledTags = styled.div`

@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import React from "react";
-import { CompanyStyle } from "../../models/company-style";
-import { Job } from "../../models/job";
+import { CompanyStyle } from "../../../models/company-style";
+import { Job } from "../../../models/job";
 import JobHeader from "./job-header";
 import JobTags from "./job-tags";
 

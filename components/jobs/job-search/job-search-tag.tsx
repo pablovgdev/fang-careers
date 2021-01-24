@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import React, { useContext } from "react";
-import { Tag } from "../../models/tags";
+import { Tag } from "../../../models/tags";
 import { JobsContext } from "../jobs-context";
 
 const StyledJobSearchTag = styled.div`
@@ -12,10 +12,8 @@ const StyledJobSearchTag = styled.div`
   font-size: 12px;
   padding: 2px 6px;
   margin: 2.5px;
+  border-radius: 5px;
   cursor: pointer;
-  @media (min-width: 768px) {
-    border-radius: 5px;
-  }
 `;
 
 interface JobSearchTagProps {
@@ -31,7 +29,7 @@ export default function JobSearchTag({ tag }: JobSearchTagProps) {
   }
 
   return (
-    <StyledJobSearchTag onClick={toggleTag}>
+    <StyledJobSearchTag onMouseDown={toggleTag}>
       {tag.value}
     </StyledJobSearchTag>
   );

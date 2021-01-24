@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import React, { MouseEvent, useContext } from "react";
-import { TAG_TYPE } from "../../models/tags";
+import { TAG_TYPE } from "../../../models/tags";
 import { JobsContext } from "../jobs-context";
 
 const StyledLogoContainer = styled.div`
@@ -57,7 +57,7 @@ export default function JobLogo({ src, hover, company }: JobLogoProps) {
 
   return (
     <StyledLogoContainer>
-      <StyledLogo hover={hover} onClick={toggleTag}>
+      <StyledLogo hover={hover} onMouseDown={toggleTag}>
         <img src={src} alt="logo" />
       </StyledLogo>
     </StyledLogoContainer>

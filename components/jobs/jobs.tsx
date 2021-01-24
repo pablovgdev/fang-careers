@@ -1,9 +1,9 @@
 import styled from "@emotion/styled";
 import React from "react";
+import JobList from "./job-list/job-list";
 import JobSearch from "./job-search/job-search";
-import JobsList from "./jobs-list";
 
-const StyledJobsContainer = styled.div`
+const StyledJobs = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -14,11 +14,11 @@ const StyledJobsContainer = styled.div`
   }
 `;
 
-export default function JobsContainer() {
+export default function Jobs() {
   return (
-    <StyledJobsContainer>
+    <StyledJobs>
       <JobSearch />
-      <JobsList />
-    </StyledJobsContainer >
+      <JobList />
+    </StyledJobs >
   );
 }
