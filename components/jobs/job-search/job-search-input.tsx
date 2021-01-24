@@ -54,7 +54,6 @@ export default function JobSearchInput() {
       setOptions(newOptions);
     } else {
       setOptions([]);
-      console.log("empty");
     }
   }
 
