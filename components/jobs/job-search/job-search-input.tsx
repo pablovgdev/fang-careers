@@ -17,6 +17,7 @@ const StyledJobSearchInput = styled.input`
   border: none;
   padding: 5px 10px;
   width: 100%;
+  font-size: 18px;
   @media (min-width: 768px) {
     border-radius: 5px;
   }

@@ -20,17 +20,9 @@ interface JobTitleProps {
 }
 
 export default function JobTitle({ title, color }: JobTitleProps) {
-  function parseTitle(title: string) {
-    title = title.split(",")[0];
-    title = title.split(" -")[0];
-    title = title.split(" –")[0];
-    title = title.split(" (")[0];
-    return title;
-  }
-
   return (
     <StyledTitle color={color}>
-      {ReactHtmlParser(parseTitle(title))}
+      {ReactHtmlParser(title)}
     </StyledTitle>
   )
 }

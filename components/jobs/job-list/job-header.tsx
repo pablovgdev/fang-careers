@@ -22,12 +22,10 @@ interface JobHeaderProps {
 }
 
 export default function JobHeader({ job, companyStyle }: JobHeaderProps) {
-  const locations = job.locations.map(location => location.split(",")[0]);
-
   return (
     <StyledHeader>
       <JobTitle title={job.title} color={companyStyle.primary} />
-      <JobLocations locations={locations} color={companyStyle.secondary} hover={companyStyle.hover} />
+      <JobLocations locations={job.countries} color={companyStyle.secondary} hover={companyStyle.hover} />
     </StyledHeader>
   )
 }

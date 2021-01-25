@@ -7,7 +7,7 @@ const StyledJobSearchOptions = styled.div`
   display: flex;
   flex-direction: column;
   position: absolute;
-  margin-top: 34px;
+  margin-top: 42px;
   width: 100%;
   background-color: white;
   overflow-y: scroll;

@@ -6,7 +6,8 @@ export interface Job {
 	title: string;
 	category: string;
 	description: string;
-	locations: string[];
+  locations: string[];
+  countries: string[];
 	tags: Tag[];
 	date: string;
 	url: string;

@@ -11,8 +11,10 @@ interface StyledContentProps {
 
 const StyledContent = styled.div<StyledContentProps>`
   display: flex;
+  align-items: center;
   cursor: pointer;
   border-bottom: 1px solid gray;
+  min-height: 130px;
   @media (min-width: 576px) {
     flex-direction: row;
   }

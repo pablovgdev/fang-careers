@@ -52,40 +52,9 @@ export async function getStaticProps(): Promise<GetStaticPropsResult<Params>> {
     return { notFound: true };
   } else {
     for (const job of jobs) {
-      const companyTag = {
-        value: job.company.toUpperCase(),
-        type: TAG_TYPE.COMPANY
-      };
-      job?.tags?.push(companyTag);
-
-      if (!tags.find(tag => companyTag.value === tag.value)) {
-        tags.push(companyTag);
-      }
-
-      for (const location of job.locations) {
-        const locationParts = location.split(",");
-
-        for (const locationPart of locationParts) {
-          const locationTag = {
-            value: locationPart.trim().toUpperCase(),
-            type: TAG_TYPE.LOCATION
-          };
-          job?.tags?.push(locationTag);
-
-          if (!tags.find(tag => tag.value === locationTag.value)) {
-            tags.push(locationTag);
-          }
-        }
-      }
-
-      for (const tag of job.tags) {
-        const techTag = {
-          value: tag.value.toUpperCase(),
-          type: tag.type
-        };
-
-        if (!tags.find(tag => tag.value === techTag.value)) {
-          tags.push(techTag);
+      for (const jobTag of job.tags) {
+        if (!tags.find(tag => tag.value === jobTag.value)) {
+          tags.push(jobTag);
         }
       }
     }
