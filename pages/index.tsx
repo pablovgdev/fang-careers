@@ -6,8 +6,9 @@ import React, { useState } from "react";
 import Container from "../components/container";
 import Jobs from "../components/jobs/jobs";
 import { JobsContext } from "../components/jobs/jobs-context";
+import { JOBS_URL } from "../config/env";
 import { Job } from "../models/job";
-import { Tag, TAG_TYPE } from "../models/tags";
+import { Tag } from "../models/tags";
 
 interface JobsPageProps {
   jobs: Job[];
@@ -42,8 +43,8 @@ export default function JobsPage({ jobs, tags }: JobsPageProps) {
 }
 
 export async function getStaticProps(): Promise<GetStaticPropsResult<Params>> {
-  const url = "https://fang-jobs-scraper.ew.r.appspot.com/jobs/software";
-  const response = await axios.get<Job[]>(url);
+  console.log(JOBS_URL);
+  const response = await axios.get<Job[]>(JOBS_URL);
   const jobs = response.data;
 
   const tags: Tag[] = [];
