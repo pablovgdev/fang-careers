@@ -43,7 +43,6 @@ export default function JobsPage({ jobs, tags }: JobsPageProps) {
 }
 
 export async function getStaticProps(): Promise<GetStaticPropsResult<Params>> {
-  console.log(JOBS_URL);
   const response = await axios.get<Job[]>(JOBS_URL);
   const jobs = response.data;
 
