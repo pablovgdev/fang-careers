@@ -8,6 +8,7 @@ interface StyledTitleProps {
 
 const StyledTitle = styled.h2<StyledTitleProps>`
   font-size: 16px;
+  letter-spacing: 0.5px;  
   color: ${props => props.color};
   @media (min-width: 768px) {
     padding-left: 10px;

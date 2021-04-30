@@ -1,6 +1,8 @@
 import styled from "@emotion/styled";
 import React from "react";
-import ReactHtmlParser from "react-html-parser";
+import { Job } from "../../../models/job";
+import JobDescriptionDetails from "./job-description-details";
+import JobDescriptionText from "./job-description-text";
 
 interface StyledDescriptionProps {
   open: boolean;
@@ -11,21 +13,6 @@ const StyledDescription = styled.div<StyledDescriptionProps>`
   padding: 20px;
   background-color: white;
   border-bottom: 1px solid gray;
-  p {
-    overflow-wrap: break-word;
-    word-wrap: break-word;
-    hyphens: auto;
-  }
-  h2 {
-    margin-top: 20px;
-  }
-  ul {
-    margin-bottom: 20px;
-  }
-  li {
-    margin-left: 30px;
-    margin-top: 10px;
-  }
   @media (min-width: 768px) {
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
@@ -34,14 +21,15 @@ const StyledDescription = styled.div<StyledDescriptionProps>`
 `;
 
 interface JobDescriptionProps {
+  job: Job;
   open: boolean;
-  description: string;
 }
 
-export default function JobDescription({ open, description }: JobDescriptionProps) {
+export default function JobDescription({ job, open }: JobDescriptionProps) {
   return (
     <StyledDescription open={open}>
-      {ReactHtmlParser(description)}
+      <JobDescriptionDetails job={job} />
+      <JobDescriptionText description={job.description} />
     </StyledDescription>
   )
 }

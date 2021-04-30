@@ -16,12 +16,14 @@ interface JobsPageProps {
 }
 
 export default function JobsPage({ jobs, tags }: JobsPageProps) {
+  const [filteredJobs, setFilteredJobs] = useState([] as Job[]);
   const [tagsFilter, setTagsFilter] = useState([] as Tag[]);
   const [options, setOptions] = useState([] as Tag[]);
   const [query, setQuery] = useState("");
   const [title, setTitle] = useState("");
   const jobsContext: JobsContext = {
     jobs, tags,
+    filteredJobs, setFilteredJobs,
     tagsFilter, setTagsFilter,
     options, setOptions,
     query, setQuery,

@@ -4,6 +4,8 @@ import { Tag } from "../../models/tags";
 
 export interface JobsContext {
   jobs: Job[];
+  filteredJobs: Job[];
+  setFilteredJobs: Dispatch<SetStateAction<Job[]>>;
   tags: Tag[];
   tagsFilter: Tag[];
   setTagsFilter: Dispatch<SetStateAction<Tag[]>>;

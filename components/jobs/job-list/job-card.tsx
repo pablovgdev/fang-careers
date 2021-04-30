@@ -37,7 +37,7 @@ export default function JobCard({ job }: JobProps) {
   return (
     <StyledJobCard background={companyStyle.background}>
       <JobContent job={job} companyStyle={companyStyle} open={open} onMouseDown={toggleDescription} />
-      <JobDescription open={open} description={job.description} />
+      <JobDescription job={job} open={open} />
     </StyledJobCard >
   );
 }

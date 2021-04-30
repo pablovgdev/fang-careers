@@ -12,11 +12,8 @@ const StyledJobList = styled.div`
 `;
 
 export default function JobList() {
-  const { jobs, tagsFilter, title } = useContext(JobsContext);
-
-  const emptyJobs: Job[] = []
-  const [filteredJobs, setFilteredJobs] = useState(emptyJobs);
-  const [infiniteJobs, setInfiniteJobs] = useState(emptyJobs);
+  const { jobs, filteredJobs, setFilteredJobs, tagsFilter, title } = useContext(JobsContext);
+  const [infiniteJobs, setInfiniteJobs] = useState([] as Job[]);
 
   useEffect(() => {
     let newJobs: Job[] = jobs;
@@ -35,10 +32,7 @@ export default function JobList() {
 
     if (title) {
       newJobs = newJobs.filter(job => {
-        return (
-          job.title.toLowerCase().startsWith(title.toLowerCase()) ||
-          job.title.toLowerCase().includes(title.toLowerCase())
-        )
+        return job.title.toLowerCase().includes(title.toLowerCase());
       });
     }
 
@@ -57,7 +51,7 @@ export default function JobList() {
         loadMore={nextJobs}
         hasMore={infiniteJobs.length < filteredJobs.length}
       >
-        {infiniteJobs.map(job => <JobCard key={job.id} job={job} />)}
+        {infiniteJobs.map(job => <JobCard key={job.hash} job={job} />)}
       </InfiniteScroll>
     </StyledJobList>
   );
