@@ -3,12 +3,12 @@ import React, { MouseEvent, useContext } from "react";
 import { TAG_TYPE } from "../../../models/tags";
 import { JobsContext } from "../jobs-context";
 
-interface StyledLocationProps {
+interface StyledCountryProps {
   color: string;
   hover: string;
 }
 
-const StyledLocation = styled.div<StyledLocationProps>`
+const StyledCountry = styled.div<StyledCountryProps>`
   font-size: 14px;
   border-radius: 5px;
   color: ${props => props.color};
@@ -22,34 +22,34 @@ const StyledLocation = styled.div<StyledLocationProps>`
   }
 `;
 
-interface JobLocationProps {
-  location: string;
+interface JobCountryProps {
+  country: string;
   color: string;
   hover: string;
 }
 
-export default function JobLocation({ location, color, hover }: JobLocationProps) {
+export default function JobCountry({ country, color, hover }: JobCountryProps) {
   const { tagsFilter, setTagsFilter } = useContext(JobsContext);
 
   function isSelected() {
-    return !!tagsFilter.find(tagFilter => tagFilter.value === location.toUpperCase());
+    return !!tagsFilter.find(tagFilter => tagFilter.value === country.toUpperCase());
   }
 
   function toggleTag(event: MouseEvent) {
     event.stopPropagation();
 
     if (isSelected()) {
-      const newTags = tagsFilter.filter(tagFilter => tagFilter.value !== location.toUpperCase());
+      const newTags = tagsFilter.filter(tagFilter => tagFilter.value !== country.toUpperCase());
       setTagsFilter(newTags);
     } else {
-      const newTags = tagsFilter.concat({ value: location.toUpperCase(), type: TAG_TYPE.LOCATION });
+      const newTags = tagsFilter.concat({ value: country.toUpperCase(), type: TAG_TYPE.LOCATION });
       setTagsFilter(newTags);
     }
   }
 
   return (
-    <StyledLocation color={color} hover={hover} onMouseDown={toggleTag}>
-      {location}
-    </StyledLocation>
+    <StyledCountry color={color} hover={hover} onMouseDown={toggleTag}>
+      {country}
+    </StyledCountry>
   )
 }

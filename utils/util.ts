@@ -1,20 +1,20 @@
 import { CompanyStyle } from "../models/company-style";
 
-export function dateFormat(dateString: string): string {
+export function normalizeDate(dateString: string): string {
   const date = new Date(dateString);
   const months = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December'
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
   ];
 
   const day = date.getDate();
@@ -22,6 +22,36 @@ export function dateFormat(dateString: string): string {
   const year = date.getFullYear();
 
   return month + " " + day + ", " + year;
+}
+
+export function normalizeTitle(title: string): string {
+  const separatorChars = [",", "-", "(", "/"];
+  let normalizedTitle = title;
+
+  for (const separatorChar of separatorChars) {
+    normalizedTitle = normalizedTitle.split(separatorChar)[0];
+  }
+
+  return normalizedTitle;
+}
+
+export function normalizeLocations(locations: string[]): string {
+  const normalizedLocations = [];
+
+  for (const location of locations) {
+    const validParts = [];
+    const parts = location.split(",");
+
+    for (const part of parts) {
+      if (part !== part.toUpperCase()) {
+        validParts.push(part.trim());
+      }
+    }
+
+    normalizedLocations.push(validParts.join(", "));
+  }
+
+  return normalizedLocations.join(" / ");
 }
 
 export function getCompanyStyle(company: string): CompanyStyle {
@@ -34,8 +64,8 @@ export function getCompanyStyle(company: string): CompanyStyle {
     amazon: "#262F3D",
     netflix: "#000000",
     google: "#EEEEEE",
-    fang: "#C20A3E"
-  }
+    fang: "#C20A3E",
+  };
 
   switch (company) {
     case "FACEBOOK":
@@ -44,7 +74,7 @@ export function getCompanyStyle(company: string): CompanyStyle {
         primary: light.primary,
         secondary: light.secondary,
         background: colors.facebook,
-        hover: brighten(colors.facebook, 30)
+        hover: brighten(colors.facebook, 30),
       };
       break;
     case "AMAZON":
@@ -53,7 +83,7 @@ export function getCompanyStyle(company: string): CompanyStyle {
         primary: light.primary,
         secondary: light.secondary,
         background: colors.amazon,
-        hover: brighten(colors.amazon, 30)
+        hover: brighten(colors.amazon, 30),
       };
       break;
     case "NETFLIX":
@@ -62,7 +92,7 @@ export function getCompanyStyle(company: string): CompanyStyle {
         primary: light.primary,
         secondary: light.secondary,
         background: colors.netflix,
-        hover: brighten(colors.netflix, 50)
+        hover: brighten(colors.netflix, 50),
       };
       break;
     case "GOOGLE":
@@ -71,7 +101,7 @@ export function getCompanyStyle(company: string): CompanyStyle {
         primary: dark.primary,
         secondary: dark.secondary,
         background: colors.google,
-        hover: brighten(colors.google, -30)
+        hover: brighten(colors.google, -30),
       };
       break;
     default:
@@ -80,7 +110,7 @@ export function getCompanyStyle(company: string): CompanyStyle {
         primary: "#F2F2F2",
         secondary: "#C20A3E",
         background: colors.fang,
-        hover: brighten(colors.fang, -30)
+        hover: brighten(colors.fang, -30),
       };
       break;
   }
@@ -104,12 +134,12 @@ export function brighten(hexColor: string, amount: number) {
   if (r > 255) r = 255;
   else if (r < 0) r = 0;
 
-  let b = ((num >> 8) & 0x00FF) + amount;
+  let b = ((num >> 8) & 0x00ff) + amount;
 
   if (b > 255) b = 255;
   else if (b < 0) b = 0;
 
-  let g = (num & 0x0000FF) + amount;
+  let g = (num & 0x0000ff) + amount;
 
   if (g > 255) g = 255;
   else if (g < 0) g = 0;

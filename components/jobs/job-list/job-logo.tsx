@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import Image from 'next/image';
 import React, { MouseEvent, useContext } from "react";
 import { TAG_TYPE } from "../../../models/tags";
 import { JobsContext } from "../jobs-context";
@@ -18,13 +19,11 @@ const StyledLogo = styled.div<StyledLogoProps>`
   width: 60px;
   height: 60px;
   img {
-    width: 60px;
-    height: 60px;
     border-radius: 5px;
   }
   @media (min-width: 768px) {
     transition: all .1s ease;
-    &:hover {
+    &:hover, &:active, &:focus {
       background-color: ${props => props.hover};
     }
   }
@@ -58,7 +57,7 @@ export default function JobLogo({ src, hover, company }: JobLogoProps) {
   return (
     <StyledLogoContainer>
       <StyledLogo hover={hover} onMouseDown={toggleTag}>
-        <img src={src} alt="logo" />
+        <Image src={"/" + src} alt="logo" width="60" height="60" />
       </StyledLogo>
     </StyledLogoContainer>
   )

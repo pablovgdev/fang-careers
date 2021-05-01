@@ -17,6 +17,7 @@ const StyledJobSearchInput = styled.input`
   border: none;
   padding: 5px 10px;
   width: 100%;
+  font-size: 18px;
   @media (min-width: 768px) {
     border-radius: 5px;
   }
@@ -24,6 +25,7 @@ const StyledJobSearchInput = styled.input`
 
 export default function JobSearchInput() {
   const {
+    filteredJobs,
     tags,
     tagsFilter,
     setTagsFilter,
@@ -54,7 +56,6 @@ export default function JobSearchInput() {
       setOptions(newOptions);
     } else {
       setOptions([]);
-      console.log("empty");
     }
   }
 
@@ -82,10 +83,22 @@ export default function JobSearchInput() {
     }
   }
 
+  function jobsResults(): string {
+    if (tagsFilter.length) {
+      if (filteredJobs.length === 1) {
+        return "1 job found...";
+      } else {
+        return `${filteredJobs.length} jobs found...`;
+      }
+    } else {
+      return "Filter jobs...";
+    }
+  }
+
   return (
     <StyledJobSearchForm onSubmit={submit}>
       <StyledJobSearchInput
-        placeholder="Filter jobs..."
+        placeholder={jobsResults()}
         type="text" value={query}
         onChange={filterOptions}
         onBlur={loseFocus}
