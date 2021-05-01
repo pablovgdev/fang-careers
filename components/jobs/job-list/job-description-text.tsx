@@ -8,7 +8,7 @@ const StyledDescriptionText = styled.div`
     word-wrap: break-word;
     hyphens: auto;
   }
-  h2 {
+  h3 {
     margin-top: 20px;
   }
   ul {
