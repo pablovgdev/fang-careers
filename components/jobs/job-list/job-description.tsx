@@ -28,7 +28,7 @@ interface JobDescriptionProps {
 export default function JobDescription({ job, open }: JobDescriptionProps) {
   return (
     <StyledDescription open={open}>
-      <JobDescriptionDetails job={job} />
+      <JobDescriptionDetails locations={job.locations} date={job.date} />
       <JobDescriptionText description={job.description} />
     </StyledDescription>
   )

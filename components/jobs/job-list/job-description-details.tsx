@@ -1,21 +1,24 @@
 import styled from "@emotion/styled";
 import React from "react";
-import { Job } from "../../../models/job";
-import { dateFormat } from "../../../utils/util";
+import { normalizeDate, normalizeLocations } from "../../../utils/util";
 
 const StyledDescriptionDetails = styled.div`
+  display: flex;
+  justify-content: space-between;
+  color: grey;
+  padding-bottom: 20px;
 `;
 
 interface JobDescriptionDetailsProps {
-  job: Job;
+  locations: string[];
+  date: string
 }
 
-export default function JobDescriptionDetails({ job }: JobDescriptionDetailsProps) {
+export default function JobDescriptionDetails({ locations, date }: JobDescriptionDetailsProps) {
   return (
     <StyledDescriptionDetails>
-      <p>Locations: {job.locations.join(", ")}</p>
-      <p>Url: {job.url}</p>
-      <p>Date: {dateFormat(job.date)}</p>
+      <p>{normalizeLocations(locations)}</p>
+      <p>{normalizeDate(date)}</p>
     </StyledDescriptionDetails>
   )
 }
