@@ -23,7 +23,7 @@ const StyledLogo = styled.div<StyledLogoProps>`
   }
   @media (min-width: 768px) {
     transition: all .1s ease;
-    &:hover, &:active, &:focus {
+    &:hover {
       background-color: ${props => props.hover};
     }
   }
