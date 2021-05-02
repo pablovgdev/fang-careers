@@ -42,8 +42,6 @@ export default function JobSearchInput() {
   }
 
   function loseFocus() {
-    setQuery("");
-    setTitle("");
     setOptions([]);
   }
 
@@ -55,6 +53,7 @@ export default function JobSearchInput() {
       const newOptions = matchOptions(search);
       setOptions(newOptions);
     } else {
+      setTitle("");
       setOptions([]);
     }
   }

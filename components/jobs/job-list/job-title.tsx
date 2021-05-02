@@ -44,7 +44,7 @@ export default function JobTitle({ title, url, color, hover }: JobTitleProps) {
     <StyledTitle color={color} hover={hover}>
       <a href={url} onMouseDown={clickTitle} target="_blank">
         <h2>
-          {normalizeTitle(title)}
+          {title}
         </h2>
       </a>
     </StyledTitle>
