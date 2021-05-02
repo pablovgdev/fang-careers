@@ -64,6 +64,7 @@ export function getCompanyStyle(company: string): CompanyStyle {
     amazon: "#262F3D",
     netflix: "#000000",
     google: "#EEEEEE",
+    apple: "#979797",
     fang: "#C20A3E",
   };
 
@@ -102,6 +103,15 @@ export function getCompanyStyle(company: string): CompanyStyle {
         secondary: dark.secondary,
         background: colors.google,
         hover: brighten(colors.google, -30),
+      };
+      break;
+    case "APPLE":
+      companyStyle = {
+        logo: "apple.webp",
+        primary: light.primary,
+        secondary: light.secondary,
+        background: colors.apple,
+        hover: brighten(colors.apple, 30),
       };
       break;
     default:
