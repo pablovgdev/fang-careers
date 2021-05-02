@@ -9,6 +9,11 @@ interface JobTagProps {
   companyStyle: CompanyStyle;
 }
 
+interface StyledTagProps {
+  primary: string;
+  secondary: string;
+}
+
 export default function JobTag({ tag, companyStyle }: JobTagProps) {
   const { tagsFilter, setTagsFilter } = useContext(JobsContext);
 
@@ -28,11 +33,6 @@ export default function JobTag({ tag, companyStyle }: JobTagProps) {
     }
   }
 
-  interface StyledTagProps {
-    primary: string;
-    secondary: string;
-  }
-
   const StyledTag = styled.div<StyledTagProps>`
     border-radius: 5px;
     border: 2px solid;
@@ -46,6 +46,7 @@ export default function JobTag({ tag, companyStyle }: JobTagProps) {
     color: ${props => isSelected() ? props.secondary : props.primary};
     background-color: ${props => isSelected() ? props.primary : props.secondary};
     @media (min-width: 768px) {
+      transition: all .1s ease;
       &:hover {
         color: ${props => props.secondary};
         background-color: ${props => props.primary};
